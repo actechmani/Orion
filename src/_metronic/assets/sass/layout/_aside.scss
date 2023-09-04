@@ -25,13 +25,13 @@
 
           i,
           .svg-icon {
-            color: $white !important;
+            color: $black !important;
           }
         }
 
         &:hover {
           .menu-icon {
-            background-color: rgba($white, 0.1);
+            background-color: rgba($blue, 0.1);
 
             i,
             .svg-icon {
@@ -55,11 +55,12 @@
       &.here > .menu-link,
       &.show > .menu-link {
         .menu-icon {
-          background-color: rgba($white, 0.1);
+          background-color: rgba($blue, 0.0);
 
           i,
+          
           .svg-icon {
-            color: $white !important;
+            color: $black !important;
           }
         }
       }

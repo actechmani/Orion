@@ -1,9 +1,11 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import clsx from 'clsx'
-import {useLocation} from 'react-router'
-import {OverlayTrigger, Tooltip} from 'react-bootstrap'
-import {checkIsActive, WithChildren} from '../../../helpers'
-import {useLayout} from '../../core'
+import { useLocation } from 'react-router'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { checkIsActive, WithChildren } from '../../../helpers'
+import { useLayout } from '../../core'
+import { FaCloud, FaAnchor, FaServicestack, FaHubspot, FaDocker } from 'react-icons/fa'
+import { ImFileText2 } from 'react-icons/im';
 
 type Props = {
   to: string
@@ -23,19 +25,19 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
   hasBullet,
   bsTitle,
 }) => {
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
   const isActive = checkIsActive(pathname, to)
-  const {config} = useLayout()
-  const {aside} = config
+  const { config } = useLayout()
+  const { aside } = config
   return (
     <div
-      className={clsx('menu-item py-3', {'here show': isActive})}
+      className={clsx('menu-item py-3', { 'here show': isActive })}
       data-kt-menu-trigger='click'
       data-kt-menu-placement='right-start'
     >
       <OverlayTrigger
         placement='right'
-        delay={{show: 250, hide: 400}}
+        delay={{ show: 250, hide: 400 }}
         overlay={(props) => (
           <Tooltip id='button-tooltip' {...props}>
             {bsTitle}
@@ -45,7 +47,37 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
         <span className='menu-link menu-center'>
           {fontIcon && aside.menuIcon === 'font' && (
             <span className='menu-icon me-0'>
-              <i className={clsx('bi', fontIcon, 'fs-2')}></i>
+              {
+                fontIcon === 'FaCloud' &&
+                <FaCloud />
+              }
+              {
+                fontIcon === 'FaAnchor' &&
+                <FaAnchor />
+              }
+
+              {
+                fontIcon === 'FaDocker' &&
+                <FaDocker />
+              }
+
+              {
+                fontIcon === 'FaServicestack' &&
+                <FaServicestack />
+              }
+
+              {
+                fontIcon === 'FaHubspot' &&
+                <FaHubspot />
+              }
+
+              {
+                fontIcon === 'ImFileText2' &&
+                <ImFileText2 />
+              }
+
+
+
             </span>
           )}
         </span>
@@ -61,4 +93,4 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
   )
 }
 
-export {AsideMenuItemWithSubMain}
+export { AsideMenuItemWithSubMain }

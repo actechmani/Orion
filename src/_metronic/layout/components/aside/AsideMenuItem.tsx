@@ -1,12 +1,14 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import {FC} from 'react'
+import { FC, } from 'react'
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
-import {useLocation} from 'react-router'
-import {OverlayTrigger, Tooltip} from 'react-bootstrap'
-import {checkIsActive, KTIcon, WithChildren} from '../../../helpers'
-import {useLayout} from '../../core'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { checkIsActive, KTIcon, WithChildren } from '../../../helpers'
+import { useLayout } from '../../core'
+import { BiHomeCircle,  } from 'react-icons/bi'
+import { FaCloud, } from 'react-icons/fa'
 
 type Props = {
   to: string
@@ -30,17 +32,18 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
   outside = false,
   hasBullet = false,
 }) => {
-  const {pathname} = useLocation()
+  const { pathname } = useLocation()
   const isActive = checkIsActive(pathname, to)
-  const {config} = useLayout()
-  const {aside} = config
+  const { config } = useLayout()
+  const { aside } = config;
+
 
   return (
     <OverlayTrigger
       placement='right'
-      delay={{show: 250, hide: 400}}
+      delay={{ show: 250, hide: 400 }}
       overlay={(props) => (
-        <Tooltip id='button-tooltip' {...props}>
+      <Tooltip id='button-tooltip' {...props}>
           {bsTitle}
         </Tooltip>
       )}
@@ -50,7 +53,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
           <a
             href={to}
             target='_blank'
-            className={clsx('menu-link menu-center', {active: isActive})}
+            className={clsx('menu-link menu-center', { active: isActive })}
           >
             {fontIcon && aside.menuIcon === 'font' && (
               <span className='menu-icon me-0'>
@@ -61,7 +64,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
         ) : (
           <>
             <Link
-              className={clsx('menu-link menu-center', {active: isActive})}
+              className={clsx('menu-link menu-center', { active: isActive })}
               to={to}
               data-bs-toggle='tooltip'
               data-bs-trigger='hover'
@@ -81,7 +84,16 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
               )}
               {fontIcon && aside.menuIcon === 'font' ? (
                 <span className='menu-icon me-0'>
-                  <i className={clsx('bi', fontIcon, 'fs-2')}></i>
+                  {fontIcon === 'biHome' &&
+                    <BiHomeCircle />
+                  }
+                  {
+                    fontIcon === 'FaCloud' &&
+                    <FaCloud />
+                  }
+
+
+                  {/* <i className={clsx('bi', fontIcon, 'fs-2')}></i> */}
                 </span>
               ) : (
                 <span className='menu-title'>{title}</span>
@@ -95,4 +107,4 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
   )
 }
 
-export {AsideMenuItem}
+export { AsideMenuItem }

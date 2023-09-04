@@ -79,7 +79,7 @@
 
   .bg-#{$name} {
     --#{$prefix}bg-rgb-color: var(--#{$prefix}#{$name}-rgb);
-    background-color: var(--#{$prefix}#{$name}) !important;
+    background-color: var(--#{$prefix}white) !important;
   }
 
   .bg-#{$name}-active {

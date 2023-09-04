@@ -1,0 +1,67 @@
+export const sidebardata = [
+  {
+    id: 1,
+    name: 'Dashboard',
+    icon: 'biHome',
+    to: '/dashboard',
+    isSubmenu: false,
+  },
+  {
+    id: 2,
+    name: 'Dashboard',
+    icon: 'facloud',
+    to: '/builder',
+    isSubmenu: false,
+  },
+  {
+    id: 3,
+    name: 'Craft',
+    icon: 'faanchor',
+    to: '/crafted/pages',
+    isSubmenu: true,
+    subMenu: [
+      {
+        id: 3.1,
+        name: 'Hello',
+        icon: 'biHome',
+        to: '/dashboard/crafted/pages/profile/overview',
+        isSubmenu: false,
+      },
+      {
+        id: 3.2,
+        name: 'new',
+        icon: 'biHome',
+        to: '/dashboard/crafted/pages/profile/overview',
+        isSubmenu: false,
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Dashboard',
+    icon: 'bilogodocker',
+    to: '/dashboard',
+    isSubmenu: false,
+  },
+  {
+    id: 5,
+    name: 'Dashboard',
+    icon: 'faservicestack',
+    to: '/dashboard',
+    isSubmenu: false,
+  },
+  {
+    id: 6,
+    name: 'Dashboard',
+    icon: 'fahubspot',
+    to: '/dashboard',
+    isSubmenu: false,
+  },
+  {
+    id: 7,
+    name: 'Dashboard',
+    icon: 'imfiletext2',
+    to: '/dashboard',
+    isSubmenu: false,
+  },
+]
