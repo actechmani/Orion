@@ -3,7 +3,6 @@ import { useIntl } from 'react-intl'
 import { AsideMenuItemWithSubMain } from './AsideMenuItemWithSubMain'
 import { AsideMenuItem } from './AsideMenuItem';
 
-
 export function AsideMenuMain() {
   const intl = useIntl()
   return (
@@ -47,11 +46,12 @@ export function AsideMenuMain() {
       </AsideMenuItemWithSubMain>
 
 
-      <AsideMenuItemWithSubMain to='/error' title='Admin Settings' fontIcon='ImFileText2' bsTitle='Admin Settings'>
-        <AsideMenuItem to='/error/404' title='Access Management' bsTitle='Access Management' hasBullet={true} />
+      <AsideMenuItemWithSubMain to='/settings' title='Admin Settings' fontIcon='ImFileText2' bsTitle='Admin Settings'>
+        <AsideMenuItem to='/settings' title='Access Management' bsTitle='Access Management' hasBullet={true} />
         <AsideMenuItem to='/error/500' title='Audit Trail' bsTitle='Audit Trail' hasBullet={true} />
         <AsideMenuItem to='/error/500' title='Application Configuration' bsTitle='Application Configuration' hasBullet={true} />
       </AsideMenuItemWithSubMain>
+
     </>
   )
 }

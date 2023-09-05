@@ -58,6 +58,7 @@
     "css-loader": "6.7.1",
     "del": "7.0.0",
     "mini-css-extract-plugin": "2.6.1",
+    "nodemon": "^3.0.1",
     "prettier": "2.6.2",
     "rtlcss-webpack-plugin": "4.0.7",
     "sass": "1.55.0",
