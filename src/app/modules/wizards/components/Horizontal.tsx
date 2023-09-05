@@ -58,8 +58,9 @@ const Horizontal: FC = () => {
   }, [stepperRef])
 
   return (
-    <div className='card'>
-      <div className='card-body'>
+    <div className='container-fluid'>
+    <div >
+      <div >
         <div
           ref={stepperRef}
           className='stepper stepper-links d-flex flex-column pt-15'
@@ -138,7 +139,7 @@ const Horizontal: FC = () => {
           </Formik>
         </div>
       </div>
-    </div>
+    </div></div>
   )
 }
 

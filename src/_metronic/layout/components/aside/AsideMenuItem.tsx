@@ -39,15 +39,15 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
 
 
   return (
-    <OverlayTrigger
-      placement='right'
-      delay={{ show: 250, hide: 400 }}
-      overlay={(props) => (
-      <Tooltip id='button-tooltip' {...props}>
-          {bsTitle}
-        </Tooltip>
-      )}
-    >
+    // <OverlayTrigger
+    //   placement='right'
+    //   delay={{ show: 250, hide: 400 }}
+    //   overlay={(props) => (
+    //   <Tooltip id='button-tooltip' {...props}>
+    //       {bsTitle}
+    //     </Tooltip>
+    //   )}
+    // >
       <div className={clsx('menu-item', isActive && 'here show', className)}>
         {outside ? (
           <a
@@ -85,16 +85,15 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
               {fontIcon && aside.menuIcon === 'font' ? (
                 <span className='menu-icon me-0'>
                   {fontIcon === 'biHome' &&
-                    <BiHomeCircle />
+                    <BiHomeCircle size={20} />
                   }
                   {
                     fontIcon === 'FaCloud' &&
-                    <FaCloud />
+                    <FaCloud size={20}/>
                   }
 
 
-                  {/* <i className={clsx('bi', fontIcon, 'fs-2')}></i> */}
-                </span>
+                 </span>
               ) : (
                 <span className='menu-title'>{title}</span>
               )}
@@ -103,7 +102,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
           </>
         )}
       </div>
-    </OverlayTrigger>
+    // </OverlayTrigger>
   )
 }
 

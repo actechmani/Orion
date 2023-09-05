@@ -8,6 +8,8 @@ import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
+import Environments from "../Screens/Environments";
+import EnvironmentSchedule from "../Screens/Environments/EnvironmentSchedule";
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -33,6 +35,23 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <ProfilePage />
+            </SuspensedView>
+          }
+        />
+
+          <Route
+          path='environment'
+          element={
+            <SuspensedView>
+              <Environments />
+            </SuspensedView>
+          }
+        />
+         <Route
+          path='env-schedule'
+          element={
+            <SuspensedView>
+              <EnvironmentSchedule />
             </SuspensedView>
           }
         />

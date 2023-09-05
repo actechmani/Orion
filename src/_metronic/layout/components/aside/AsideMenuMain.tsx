@@ -15,9 +15,9 @@ export function AsideMenuMain() {
         className='py-3'
       />
 
-      <AsideMenuItemWithSubMain to='/error' title='Environments' fontIcon='FaCloud' bsTitle='Environment'>
-        <AsideMenuItem to='/error/404' title='Environments' bsTitle='Environment' hasBullet={true} />
-        <AsideMenuItem to='/error/500' title='Environment Schedule' bsTitle='Environment Schedule' hasBullet={true} />
+      <AsideMenuItemWithSubMain to='/environment' title='Environments' fontIcon='FaCloud' bsTitle='Environment'>
+        <AsideMenuItem to='/environment' title='Environments' bsTitle='Environment' hasBullet={true} />
+        <AsideMenuItem to='/env-schedule' title='Environment Schedule' bsTitle='Environment Schedule' hasBullet={true} />
       </AsideMenuItemWithSubMain>
 
       <AsideMenuItemWithSubMain to='/error' title='K8s Clusters' fontIcon='FaAnchor' bsTitle='K8s Clusters'>

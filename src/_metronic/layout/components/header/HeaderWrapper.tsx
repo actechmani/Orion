@@ -14,14 +14,14 @@ export function HeaderWrapper() {
   return (
     <div
       id='kt_header'
-      className={clsx('header', classes.header.join(' '), ' align-items-stretch')}
+      className={clsx('header', classes.header.join(' '), ' align-items-stretch  ')} style={{height:"60px"}}
       {...attributes.headerMenu}
     >
       {/* begin::Container */}
       <div
         className={clsx(
           classes.headerContainer.join(' '),
-          'd-flex align-items-stretch justify-content-between'
+          'd-flex align-items-stretch justify-content-between '
         )}
       >
         {/* begin::Aside mobile toggle */}

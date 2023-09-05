@@ -10,7 +10,7 @@ export const sidebardata = [
     id: 2,
     name: 'Dashboard',
     icon: 'facloud',
-    to: '/builder',
+    to: 'environment',
     isSubmenu: false,
   },
   {

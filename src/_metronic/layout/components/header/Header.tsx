@@ -10,7 +10,7 @@ const Header: FC = () => {
       data-kt-drawer-name='header-menu'
       data-kt-drawer-activate='{default: true, lg: false}'
       data-kt-drawer-overlay='true'
-      data-kt-drawer-width="{default:'200px', '300px': '250px'}"
+      data-kt-drawer-width="{default:'150px', '200px': '200px'}"
       data-kt-drawer-direction='end'
       data-kt-drawer-toggle='#kt_header_menu_mobile_toggle'
       data-kt-swapper='true'

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import { toAbsoluteUrl } from '../../../helpers'
-
+ 
 type Props = {
   id: number
   className: string
@@ -12,8 +11,7 @@ type Props = {
 
 const StatisticsWidget1: React.FC<Props> = ({ className, image, id, title, description }) => {
   const logoname: string = "logo" + id;
-  console.log("logoname", logoname)
-
+ 
   return (
     <div
       className={`card bgi-no-repeat ${className}`}

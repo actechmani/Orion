@@ -46,34 +46,34 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
       >
         <span className='menu-link menu-center'>
           {fontIcon && aside.menuIcon === 'font' && (
-            <span className='menu-icon me-0'>
+            <span className='menu-icon me-0 '>
               {
                 fontIcon === 'FaCloud' &&
-                <FaCloud />
+                <FaCloud size={20}/>
               }
               {
                 fontIcon === 'FaAnchor' &&
-                <FaAnchor />
+                <FaAnchor size={20}/>
               }
 
               {
                 fontIcon === 'FaDocker' &&
-                <FaDocker />
+                <FaDocker size={20}/>
               }
 
               {
                 fontIcon === 'FaServicestack' &&
-                <FaServicestack />
+                <FaServicestack size={20}/>
               }
 
               {
                 fontIcon === 'FaHubspot' &&
-                <FaHubspot />
+                <FaHubspot size={20}/>
               }
 
               {
                 fontIcon === 'ImFileText2' &&
-                <ImFileText2 />
+                <ImFileText2 size={20}/>
               }
 
 
