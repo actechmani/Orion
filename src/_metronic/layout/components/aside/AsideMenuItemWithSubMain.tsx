@@ -5,7 +5,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { checkIsActive, WithChildren } from '../../../helpers'
 import { useLayout } from '../../core'
 import { FaCloud, FaAnchor, FaServicestack, FaHubspot, FaDocker } from 'react-icons/fa'
-import { ImFileText2 } from 'react-icons/im';
+import { RiSettings3Fill } from 'react-icons/ri';
 
 type Props = {
   to: string
@@ -72,8 +72,8 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
               }
 
               {
-                fontIcon === 'ImFileText2' &&
-                <ImFileText2 size={20}/>
+                fontIcon === 'RiSettings3Fill' &&
+                <RiSettings3Fill size={20}/>
               }
 
 

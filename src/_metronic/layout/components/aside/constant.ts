@@ -2,7 +2,7 @@ export const sidebardata = [
   {
     id: 1,
     name: 'Dashboard',
-    icon: 'biHome',
+    icon: 'BiSolidDashboard',
     to: '/dashboard',
     isSubmenu: false,
   },
@@ -60,7 +60,7 @@ export const sidebardata = [
   {
     id: 7,
     name: 'Dashboard',
-    icon: 'imfiletext2',
+    icon: 'RiSettings3Fill',
     to: '/dashboard',
     isSubmenu: false,
   },

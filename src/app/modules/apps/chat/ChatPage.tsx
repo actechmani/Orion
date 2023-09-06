@@ -27,7 +27,7 @@ const ChatPage = () => {
           path='private-chat'
           element={
             <>
-              <PageTitle breadcrumbs={chatBreadCrumbs}>Private chat</PageTitle>
+              <PageTitle  >Private chat</PageTitle>
               <Private />
             </>
           }
@@ -45,7 +45,7 @@ const ChatPage = () => {
           path='drawer-chat'
           element={
             <>
-              <PageTitle breadcrumbs={chatBreadCrumbs}>Drawer chat</PageTitle>
+              <PageTitle breadcrumbs={chatBreadCrumbs}>new Drawer chat</PageTitle>
               <Drawer />
             </>
           }

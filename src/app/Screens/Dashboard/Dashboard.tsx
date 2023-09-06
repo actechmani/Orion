@@ -26,7 +26,7 @@ const DashboardPage = () => {
         <>
             {/* begin::Row  */}
             <div className='row g-5 g-xl-8'>
-                dummy content
+              
                 {/* begin::Col  */}
                 <div className='col-xxl-4'>
                     <div className='row g-5 g-xl-8'>

@@ -35,14 +35,14 @@
 
             i,
             .svg-icon {
-              color: $white !important;
+              color: rgba($blue, 0.1) !important;
             }
           }
         }
 
         &.active {
           .menu-icon {
-            background-color: $white;
+            background-color: $blue;
 
             i,
             .svg-icon {

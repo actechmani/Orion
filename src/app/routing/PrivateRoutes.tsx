@@ -10,6 +10,17 @@ import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import Environments from "../Screens/Environments";
 import EnvironmentSchedule from "../Screens/Environments/EnvironmentSchedule";
+import ClusterGridPreview from '../Screens/Cluster'
+import FoundationComponents from '../Screens/Foundation'
+import BluePrintGridView from '../Screens/Blueprint'
+import ImageService from '../Screens/ImageService'
+import ImageServiceUBI from '../Screens/ImageServiceUBI'
+import ServiceIndex from '../Screens/Service'
+import { Entitlements } from '../Screens/AdminPortal/Entitlements'
+import { AuditTrail } from '../Screens/AdminPortal/AuditTrail'
+import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfigurationManager'
+import ClusterSchedule from '../Screens/ClusterSchedule'
+import { PageTitle } from '../../_metronic/layout/core'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -42,7 +53,8 @@ const PrivateRoutes = () => {
           <Route
           path='environment'
           element={
-            <SuspensedView>
+            <SuspensedView> 
+               
               <Environments />
             </SuspensedView>
           }
@@ -52,6 +64,94 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <EnvironmentSchedule />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='cluster-service'
+          element={
+            <SuspensedView>
+              <ClusterGridPreview />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='foundation-components'
+          element={
+            <SuspensedView>
+              <FoundationComponents />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='blueprint'
+          element={
+            <SuspensedView>
+              <BluePrintGridView />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='global-cluster-service'
+          element={
+            <SuspensedView>
+              <ClusterGridPreview />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='cluster-schedule'
+          element={
+            <SuspensedView>
+              <ClusterSchedule />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='image-service'
+          element={
+            <SuspensedView>
+              <ImageService />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='image-service-ubi'
+          element={
+            <SuspensedView>
+              <ImageServiceUBI />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='service'
+          element={
+            <SuspensedView>
+              <ServiceIndex />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='entitlements'
+          element={
+            <SuspensedView>
+              <Entitlements />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='audit-trail'
+          element={
+            <SuspensedView>
+              <AuditTrail />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='app-configuration'
+          element={
+            <SuspensedView>
+              <AppConfigurationManager />
             </SuspensedView>
           }
         />

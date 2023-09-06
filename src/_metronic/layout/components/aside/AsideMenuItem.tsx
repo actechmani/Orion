@@ -7,7 +7,7 @@ import { useLocation } from 'react-router'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { checkIsActive, KTIcon, WithChildren } from '../../../helpers'
 import { useLayout } from '../../core'
-import { BiHomeCircle,  } from 'react-icons/bi'
+import { BiSolidDashboard  } from 'react-icons/bi'
 import { FaCloud, } from 'react-icons/fa'
 
 type Props = {
@@ -39,15 +39,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
 
 
   return (
-    // <OverlayTrigger
-    //   placement='right'
-    //   delay={{ show: 250, hide: 400 }}
-    //   overlay={(props) => (
-    //   <Tooltip id='button-tooltip' {...props}>
-    //       {bsTitle}
-    //     </Tooltip>
-    //   )}
-    // >
+  
       <div className={clsx('menu-item', isActive && 'here show', className)}>
         {outside ? (
           <a
@@ -84,8 +76,8 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
               )}
               {fontIcon && aside.menuIcon === 'font' ? (
                 <span className='menu-icon me-0'>
-                  {fontIcon === 'biHome' &&
-                    <BiHomeCircle size={20} />
+                  {fontIcon === 'BiSolidDashboard' &&
+                    <BiSolidDashboard size={20} />
                   }
                   {
                     fontIcon === 'FaCloud' &&
@@ -102,7 +94,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
           </>
         )}
       </div>
-    // </OverlayTrigger>
+ 
   )
 }
 
