@@ -1,10 +1,14 @@
-import {Suspense} from 'react'
-import {Outlet} from 'react-router-dom'
-import {I18nProvider} from '../_metronic/i18n/i18nProvider'
-import {LayoutProvider, LayoutSplashScreen} from '../_metronic/layout/core'
-import {MasterInit} from '../_metronic/layout/MasterInit'
-import {AuthInit} from './modules/auth'
-import {ThemeModeProvider} from '../_metronic/partials/layout/theme-mode/ThemeModeProvider'
+import { Suspense } from 'react'
+import { BrowserRouter, Outlet } from 'react-router-dom'
+import { I18nProvider } from '../_metronic/i18n/i18nProvider'
+import { LayoutProvider, LayoutSplashScreen } from '../_metronic/layout/core'
+import { MasterInit } from '../_metronic/layout/MasterInit'
+import { AuthInit } from './modules/auth'
+import { ThemeModeProvider } from '../_metronic/partials/layout/theme-mode/ThemeModeProvider'
+import AppRoutes from './routing/AppRoutes'
+
+
+
 
 const App = () => {
   return (
@@ -13,7 +17,9 @@ const App = () => {
         <LayoutProvider>
           <ThemeModeProvider>
             <AuthInit>
-              <Outlet />
+              <BrowserRouter>
+                <AppRoutes />
+              </BrowserRouter>
               <MasterInit />
             </AuthInit>
           </ThemeModeProvider>
@@ -23,4 +29,4 @@ const App = () => {
   )
 }
 
-export {App}
+export { App }

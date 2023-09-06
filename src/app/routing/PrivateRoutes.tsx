@@ -1,12 +1,12 @@
-import {FC, lazy, Suspense} from 'react'
-import {Navigate, Route, Routes} from 'react-router-dom'
-import {MasterLayout} from '../../_metronic/layout/MasterLayout'
+import { FC, lazy, Suspense } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { MasterLayout } from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
-import {DashboardWrapper} from '../Screens/Dashboard/Dashboard'
-import {Settings} from '../Screens/Settings/Settings'
-import {MenuTestPage} from '../pages/MenuTestPage'
-import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
-import {WithChildren} from '../../_metronic/helpers'
+import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
+import { Settings } from '../Screens/Settings/Settings'
+import { MenuTestPage } from '../pages/MenuTestPage'
+import { getCSSVariableValue } from '../../_metronic/assets/ts/_utils'
+import { WithChildren } from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import Environments from "../Screens/Environments";
 import EnvironmentSchedule from "../Screens/Environments/EnvironmentSchedule";
@@ -20,7 +20,6 @@ import { Entitlements } from '../Screens/AdminPortal/Entitlements'
 import { AuditTrail } from '../Screens/AdminPortal/AuditTrail'
 import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfigurationManager'
 import ClusterSchedule from '../Screens/ClusterSchedule'
-import { PageTitle } from '../../_metronic/layout/core'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -50,16 +49,16 @@ const PrivateRoutes = () => {
           }
         />
 
-          <Route
+        <Route
           path='environment'
           element={
-            <SuspensedView> 
-               
+            <SuspensedView>
+
               <Environments />
             </SuspensedView>
           }
         />
-         <Route
+        <Route
           path='env-schedule'
           element={
             <SuspensedView>
@@ -195,7 +194,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
-        
+
         {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/error/404' />} />
       </Route>
@@ -203,7 +202,7 @@ const PrivateRoutes = () => {
   )
 }
 
-const SuspensedView: FC<WithChildren> = ({children}) => {
+const SuspensedView: FC<WithChildren> = ({ children }) => {
   const baseColor = getCSSVariableValue('--bs-primary')
   TopBarProgress.config({
     barColors: {
@@ -215,4 +214,4 @@ const SuspensedView: FC<WithChildren> = ({children}) => {
   return <Suspense fallback={<TopBarProgress />}>{children}</Suspense>
 }
 
-export {PrivateRoutes}
+export { PrivateRoutes }
