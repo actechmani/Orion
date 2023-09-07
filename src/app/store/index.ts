@@ -1,11 +1,11 @@
 import createSagaMiddleware from 'redux-saga'
 import {applyMiddleware, compose, legacy_createStore as createStore} from 'redux'
-import {createBrowserHistory} from 'history'
+// import {createBrowserHistory} from 'history'
 import thunk from 'redux-thunk'
 import rootSaga from './saga'
 import createRootReducer from './reducer'
 
-export const history = createBrowserHistory()
+// export const history = createBrowserHistory()
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [thunk, sagaMiddleware]
 const rootReducer = createRootReducer() // Create your root reducer

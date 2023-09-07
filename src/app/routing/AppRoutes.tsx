@@ -1,37 +1,30 @@
 import { FC } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Security, LoginCallback } from '@okta/okta-react';
+import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import OktaAuth, { toRelativeUrl } from '@okta/okta-auth-js'
-import { PrivateRoutes } from './PrivateRoutes';
+import { RequiredAuth } from './SecureRoute';
+import config from '../config';
 
-
-const oktaAuth = new OktaAuth({
-  issuer: 'https://dev-594742.okta.com/oauth2/default',
-  clientId: '0oaazgcf83Fvf47ZP4x7',
-  redirectUri: 'http://localhost:3000/login/callback',
-  pkce: true,
-  scopes: ['openid', 'profile', 'email'],
-});
+const oktaAuth = new OktaAuth(config.oidc);
 
 const AppRoutes: FC = () => {
   const navigate = useNavigate();
 
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     navigate(toRelativeUrl(originalUri || '/', window.location.origin));
+  
   };
 
   return (
+    
+    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
     <Routes>
-      <Route path="/login/callback" element={<LoginCallback />} />
-      <Route
-        path="*"
-        element={
-          <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-            <PrivateRoutes />
-          </Security>
-        }
-      />
+      
+        <Route path='/login/callback' element={<LoginCallback />} />
+        <Route path='/*' element={<RequiredAuth />} />
+      
     </Routes>
+    </Security>
   );
 };
 
