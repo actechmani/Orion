@@ -10,6 +10,7 @@ export default {
     redirectUri: REDIRECT_URI,
     scopes: ['openid', 'profile', 'email'],
     pkce: true,
+
   },
  
 };

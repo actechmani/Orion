@@ -1,7 +1,7 @@
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios'
 import _get from 'lodash/get'
 
-class HttpInterceptor {
+export class HttpInterceptor {
   private _request: AxiosInstance
 
   constructor(baseUrl: string) {
@@ -19,15 +19,17 @@ class HttpInterceptor {
 
   private _configInterceptRequest = () => {
     this._request.interceptors.request.use(this._requestCallBack)
-  }
+}
 
-  private _requestCallBack(config: AxiosRequestConfig): AxiosRequestConfig {
+//     this._request.interceptors.request.use(this._requestCallBack)
+//   }
+
+  private _requestCallBack(config: any): any {
     config.headers = {
       accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('okta-token')}`,
       'Access-Control-Allow-Origin': '*',
       'x-tenant-id': localStorage.getItem('tenantId') || null,
-      'x-user-id': localStorage.getItem('x-userId') || null,
       ...config.headers, // Preserve existing headers
     }
     return config
@@ -79,4 +81,3 @@ class HttpInterceptor {
   getRequest = (): AxiosInstance => this._request
 }
 
-export default HttpInterceptor

@@ -10,8 +10,14 @@ const HeaderUserMenu: FC = () => {
   const {currentUser, logout} = useAuth();
   const {oktaAuth} = useOktaAuth();
 
-  const logoutOcta = () =>{
-    oktaAuth.signOut()
+  const logoutOcta = async () =>{
+    console.log("window.origin",window.origin)
+    try {
+      await oktaAuth.signOut();
+  } catch (e) {
+      console.log(e);
+  }
+    // oktaAuth.tokenManager.clear();
   }
   return (
     <div
