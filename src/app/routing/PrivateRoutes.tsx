@@ -2,7 +2,6 @@ import React, { FC, lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { MasterLayout } from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
-import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
 import { Settings } from '../Screens/Settings/Settings'
 import { MenuTestPage } from '../pages/MenuTestPage'
 import { getCSSVariableValue } from '../../_metronic/assets/ts/_utils'
@@ -20,6 +19,7 @@ import { Entitlements } from '../Screens/AdminPortal/Entitlements'
 import { AuditTrail } from '../Screens/AdminPortal/AuditTrail'
 import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfigurationManager'
 import ClusterSchedule from '../Screens/ClusterSchedule'
+import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -33,7 +33,7 @@ const PrivateRoutes = () => {
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registartion */}
-        <Route path="/"  element={  <Navigate to="/dashboard" />} />
+        <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path='auth/*' element={<Navigate to='/dashboard' />} />
         {/* Pages */}
         <Route path='dashboard' element={<DashboardWrapper />} />

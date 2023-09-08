@@ -19,7 +19,6 @@ import './_metronic/assets/keenicons/solid/style.css'
 import './_metronic/assets/sass/style.scss'
 import './_metronic/assets/sass/plugins.scss'
 import './_metronic/assets/sass/style.react.scss'
-import { AuthProvider, setupAxios } from './app/modules/auth'
 import Root from './app/Root'
 /**
  * Creates `axios-mock-adapter` instance for provided `axios` instance, add
@@ -32,7 +31,7 @@ import Root from './app/Root'
  *
  * @see https://github.com/axios/axios#interceptors
  */
-setupAxios(axios)
+
 Chart.register(...registerables)
 
 const queryClient = new QueryClient()

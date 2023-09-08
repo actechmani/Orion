@@ -1,8 +1,7 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import {
   MixedWidget1,
   MixedWidget2,
-  MixedWidget3,
   MixedWidget4,
   MixedWidget5,
   MixedWidget6,
@@ -76,14 +75,12 @@ const Mixed: FC = () => {
       {/* end::Row */}
 
       {/* begin::Row */}
-      <div className='row g-5 g-xl-8'>
-        {/* begin::Col */}
+      {/* <div className='row g-5 g-xl-8'>
+       
         <div className='col-xl-4'>
           <MixedWidget3 className='card-xl-stretch mb-xl-8' chartColor='info' chartHeight='250px' />
         </div>
-        {/* end::Col */}
-
-        {/* begin::Col */}
+       
         <div className='col-xl-4'>
           <MixedWidget3
             className='card-xl-stretch mb-xl-8'
@@ -91,9 +88,7 @@ const Mixed: FC = () => {
             chartHeight='250px'
           />
         </div>
-        {/* end::Col */}
-
-        {/* begin::Col */}
+       
         <div className='col-xl-4'>
           <MixedWidget3
             className='card-xl-stretch mb-5 mb-xl-8'
@@ -101,9 +96,9 @@ const Mixed: FC = () => {
             chartHeight='250px'
           />
         </div>
-        {/* end::Col */}
-      </div>
-      {/* end::Row */}
+       
+      </div> */}
+
 
       {/* begin::Row */}
       <div className='row g-5 g-xl-8'>
@@ -396,4 +391,4 @@ const Mixed: FC = () => {
   )
 }
 
-export {Mixed}
+export { Mixed }
