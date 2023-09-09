@@ -1,14 +1,28 @@
-import { useIntl } from 'react-intl'
 import { PageTitle } from '../../../_metronic/layout/core'
-import { ChartsWidget1 } from '../../../_metronic/partials/widgets';
+import { CardDesign, ChartsWidget1 } from '../../../_metronic/partials/widgets';
 import PieChart from '../../../_metronic/partials/widgets/charts/PieChart';
-import { CardDesign } from "../../../_metronic/partials/widgets/mixed/DashboadCardDetails"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { getTenantList } from '../../store/reducer/tenentReducer';
+
+
 
 const DashboardPage = () => {
+    const dispatch = useDispatch();
+    const tenantList = useSelector((state: any) => state.tenant.tenants)
+
+
+
+    useEffect(() => {
+        dispatch(getTenantList());
+        console.log("tenantList", tenantList)
+    }, [dispatch])
+
     return (
         <>
-
+            {/* begin::Row  */}
             <div className='row g-5 g-xl-8'>
+                {/* begin::Col  */}
                 <div className='col-xxl-4'>
                     <div className='row g-5 g-xl-8'>
                         <div className='col-xl-6'>
@@ -31,10 +45,10 @@ const DashboardPage = () => {
 }
 
 const DashboardWrapper = () => {
-    const intl = useIntl()
+
     return (
         <>
-            <PageTitle breadcrumbs={[]}>{intl.formatMessage({ id: 'MENU.DASHBOARD' })}</PageTitle>
+            <PageTitle breadcrumbs={[]}>Dashboard</PageTitle>
             <DashboardPage />
         </>
     )
