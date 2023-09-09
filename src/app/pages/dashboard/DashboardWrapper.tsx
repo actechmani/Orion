@@ -1,13 +1,13 @@
-import {useEffect} from 'react'
-import {useIntl} from 'react-intl'
-import {PageTitle} from '../../../_metronic/layout/core'
+import { useEffect } from 'react'
+import { useIntl } from 'react-intl'
+import { PageTitle } from '../../../_metronic/layout/core'
 import {
   ListsWidget4,
   ListsWidget5,
   TablesWidget10,
   MixedWidget8,
   MixedWidget5,
-  MixedWidget3,
+ 
 } from '../../../_metronic/partials/widgets'
 
 const DashboardPage = () => {
@@ -44,13 +44,7 @@ const DashboardPage = () => {
         </div>
         {/* end::Col  */}
         {/* begin::Col  */}
-        <div className='col-xl-4'>
-          <MixedWidget3
-            className='card-xl-stretch mb-5 mb-xl-8'
-            chartColor='primary'
-            chartHeight='225px'
-          />
-        </div>
+         
         {/* end::Col  */}
         {/* begin::Col  */}
         <div className='col-xl-4'>
@@ -116,10 +110,10 @@ const DashboardWrapper = () => {
   const intl = useIntl()
   return (
     <>
-      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'MENU.DASHBOARD'})}</PageTitle>
+      <PageTitle breadcrumbs={[]}>{intl.formatMessage({ id: 'MENU.DASHBOARD' })}</PageTitle>
       <DashboardPage />
     </>
   )
 }
 
-export {DashboardWrapper}
+export { DashboardWrapper }

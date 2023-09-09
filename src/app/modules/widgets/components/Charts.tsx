@@ -1,9 +1,8 @@
-import React, {FC} from 'react'
+import React, { FC } from 'react'
 import {
   ChartsWidget1,
   ChartsWidget2,
   ChartsWidget3,
-  ChartsWidget4,
   ChartsWidget5,
   ChartsWidget6,
   ChartsWidget7,
@@ -29,9 +28,7 @@ const Charts: FC = () => {
         <div className='col-xl-6'>
           <ChartsWidget3 className='card-xl-stretch mb-xl-8' />
         </div>
-        <div className='col-xl-6'>
-          <ChartsWidget4 className='card-xl-stretch mb-5 mb-xl-8' />
-        </div>
+
       </div>
       {/* end::Row */}
 
@@ -60,4 +57,4 @@ const Charts: FC = () => {
   )
 }
 
-export {Charts}
+export { Charts }

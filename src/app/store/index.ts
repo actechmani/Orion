@@ -8,7 +8,7 @@ import createRootReducer from './reducer'
 // export const history = createBrowserHistory()
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = [thunk, sagaMiddleware]
-const rootReducer = createRootReducer() // Create your root reducer
+const rootReducer = createRootReducer()
 
 export default function configureStore() {
   const store = createStore(

@@ -1,22 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import {FC} from 'react'
-import {Link} from 'react-router-dom'
-import {useAuth} from '../../../../app/modules/auth'
-import {Languages} from './Languages'
-import {toAbsoluteUrl} from '../../../helpers'
+import { FC } from 'react'
+import { Link } from 'react-router-dom'
+import { Languages } from './Languages'
+import { toAbsoluteUrl } from '../../../helpers'
 import { useOktaAuth } from '@okta/okta-react'
 
 const HeaderUserMenu: FC = () => {
-  const {currentUser, logout} = useAuth();
-  const {oktaAuth} = useOktaAuth();
+  const { oktaAuth } = useOktaAuth();
 
-  const logoutOcta = async () =>{
-    console.log("window.origin",window.origin)
+  const logoutOcta = async () => {
+    console.log("window.origin", window.origin)
     try {
       await oktaAuth.signOut();
-  } catch (e) {
+    } catch (e) {
       console.log(e);
-  }
+    }
     // oktaAuth.tokenManager.clear();
   }
   return (
@@ -32,12 +30,10 @@ const HeaderUserMenu: FC = () => {
 
           <div className='d-flex flex-column'>
             <div className='fw-bolder d-flex align-items-center fs-5'>
-              {currentUser?.first_name} {currentUser?.first_name}
+
               <span className='badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2'>Pro</span>
             </div>
-            <a href='#' className='fw-bold text-muted text-hover-primary fs-7'>
-              {currentUser?.email}
-            </a>
+
           </div>
         </div>
       </div>
@@ -136,12 +132,12 @@ const HeaderUserMenu: FC = () => {
       </div>
 
       <div className='menu-item px-5'>
-        <a onClick={logoutOcta} className='menu-link px-5'>
+        <button onClick={logoutOcta} className='menu-link px-5'>
           Sign Out
-        </a>
+        </button>
       </div>
     </div>
   )
 }
 
-export {HeaderUserMenu}
+export { HeaderUserMenu }

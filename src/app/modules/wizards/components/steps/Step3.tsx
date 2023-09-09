@@ -1,91 +1,64 @@
-import React, {FC} from 'react'
-import {Field, ErrorMessage} from 'formik'
+import React, { FC } from 'react'
+import { Field, ErrorMessage } from 'formik'
 
 const Step3: FC = () => {
+  const planname = [{
+    id: 1,
+    name: "Cluster Management",
+    icon: "icon"
+  },
+  {
+    id: 2,
+    name: "Environment Management",
+    icon: "icon"
+  },
+  {
+    id: 3,
+    name: "Service Catalog",
+    icon: "icon"
+  },
+
+  ]
   return (
     <div className='w-100'>
-      <div className='pb-10 pb-lg-12'>
-        <h2 className='fw-bolder text-dark'>Business Details</h2>
+      <div className='pb-10 pb-lg-15'>
+        <h2 className='fw-bolder text-dark'>What are you planning
+          to use this app for?</h2>
 
-        <div className='text-gray-400 fw-bold fs-6'>
-          If you need more info, please check out
-          <a href='/dashboard' className='link-primary fw-bolder'>
-            {' '}
-            Help Page
-          </a>
-          .
-        </div>
+
       </div>
 
-      <div className='fv-row mb-10'>
-        <label className='form-label required'>Business Name</label>
+      <div className='mb-10 fv-row'>
 
-        <Field name='businessName' className='form-control form-control-lg form-control-solid' />
-        <div className='text-danger mt-2'>
-          <ErrorMessage name='businessName' />
-        </div>
+        {planname.map((name, id: any) => (
+          <div className='row mb-2' data-kt-buttons='true'>
+
+            <div className='col' >
+              <Field
+                type='radio'
+                className='btn-check'
+                name='accountTeamSize'
+                value={name.name}
+                id={`kt_account_team_size_select_${id}`}
+              />
+              <label
+                className='btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4'
+                htmlFor={`kt_account_team_size_select_${id}`}
+              >
+                <span className='fw-bolder fs-3'>{name.name}</span>
+              </label>
+            </div>
+
+
+
+
+          </div>
+        ))}
       </div>
 
-      <div className='fv-row mb-10'>
-        <label className='d-flex align-items-center form-label'>
-          <span className='required'>Shortened Descriptor</span>
-        </label>
 
-        <Field
-          name='businessDescriptor'
-          className='form-control form-control-lg form-control-solid'
-        />
-        <div className='text-danger mt-2'>
-          <ErrorMessage name='businessDescriptor' />
-        </div>
-
-        <div className='form-text'>
-          Customers will see this shortened version of your statement descriptor
-        </div>
-      </div>
-
-      <div className='fv-row mb-10'>
-        <label className='form-label required'>Corporation Type</label>
-
-        <Field
-          as='select'
-          name='businessType'
-          className='form-select form-select-lg form-select-solid'
-        >
-          <option></option>
-          <option value='1'>S Corporation</option>
-          <option value='1'>C Corporation</option>
-          <option value='2'>Sole Proprietorship</option>
-          <option value='3'>Non-profit</option>
-          <option value='4'>Limited Liability</option>
-          <option value='5'>General Partnership</option>
-        </Field>
-        <div className='text-danger mt-2'>
-          <ErrorMessage name='businessType' />
-        </div>
-      </div>
-
-      <div className='fv-row mb-10'>
-        <label className='form-label'>Business Description</label>
-
-        <Field
-          as='textarea'
-          name='businessDescription'
-          className='form-control form-control-lg form-control-solid'
-          rows={3}
-        ></Field>
-      </div>
-
-      <div className='fv-row mb-0'>
-        <label className='fs-6 fw-bold form-label required'>Contact Email</label>
-
-        <Field name='businessEmail' className='form-control form-control-lg form-control-solid' />
-        <div className='text-danger mt-2'>
-          <ErrorMessage name='businessEmail' />
-        </div>
-      </div>
     </div>
   )
 }
 
-export {Step3}
+export { Step3 }

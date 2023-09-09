@@ -1,23 +1,26 @@
-import {useMemo} from 'react'
-import {useTable, ColumnInstance, Row} from 'react-table'
-import {CustomHeaderColumn} from '../table/columns/CustomHeaderColumn'
-import {CustomRow} from '../table/columns/CustomRow'
-import {useQueryResponseData, useQueryResponseLoading} from '../core/QueryResponseProvider'
-import {usersColumns} from './columns/_columns'
-import {User} from '../core/_models'
-import {UsersListLoading} from '../components/loading/UsersListLoading'
-import {UsersListPagination} from '../components/pagination/UsersListPagination'
-import {KTCardBody} from '../../../../../../_metronic/helpers'
+import { UsersListPagination } from '../components/pagination/UsersListPagination'
+import { KTCardBody } from '../../../../../../_metronic/helpers'
 
 const UsersTable = () => {
-  const users = useQueryResponseData()
-  const isLoading = useQueryResponseLoading()
-  const data = useMemo(() => users, [users])
-  const columns = useMemo(() => usersColumns, [])
-  const {getTableProps, getTableBodyProps, headers, rows, prepareRow} = useTable({
-    columns,
-    data,
-  })
+
+  const head = [{
+    id: 1,
+    title: "id",
+    data: "1"
+  },
+  {
+    id: 2,
+    title: "name",
+    data: "mark"
+  },
+
+  {
+    id: 3,
+    title: "age",
+    data: 13
+  },
+
+  ]
 
   return (
     <KTCardBody className='py-4'>
@@ -25,21 +28,20 @@ const UsersTable = () => {
         <table
           id='kt_table_users'
           className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
-          {...getTableProps()}
         >
           <thead>
             <tr className='text-start text-muted fw-bolder fs-7 text-uppercase gs-0'>
-              {headers.map((column: ColumnInstance<User>) => (
-                <CustomHeaderColumn key={column.id} column={column} />
+              {head.map((column: any) => (
+                <th>{column.title}</th>
               ))}
+
             </tr>
           </thead>
-          <tbody className='text-gray-600 fw-bold' {...getTableBodyProps()}>
-            {rows.length > 0 ? (
-              rows.map((row: Row<User>, i) => {
-                prepareRow(row)
-                return <CustomRow row={row} key={`row-${i}-${row.id}`} />
-              })
+          <tbody className='text-gray-600 fw-bold' >
+            {head.length > 0 ? (
+              head.map((row: any, i) => (
+                <td className='text-start min-w-100px'>{row.data}</td>
+              ))
             ) : (
               <tr>
                 <td colSpan={7}>
@@ -53,9 +55,8 @@ const UsersTable = () => {
         </table>
       </div>
       <UsersListPagination />
-      {isLoading && <UsersListLoading />}
     </KTCardBody>
   )
 }
 
-export {UsersTable}
+export { UsersTable }
