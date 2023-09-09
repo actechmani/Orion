@@ -8,22 +8,14 @@ const Step1: FC = () => {
     <div className='w-100'>
       <div className='pb-10 pb-lg-15'>
         <h2 className='fw-bolder d-flex align-items-center text-dark'>
-          Choose Account Type
+        Which team do you belong to?
           <i
             className='fas fa-exclamation-circle ms-2 fs-7'
             data-bs-toggle='tooltip'
             title='Billing is issued based on your selected account type'
           ></i>
         </h2>
-
-        <div className='text-gray-400 fw-bold fs-6'>
-          If you need more info, please check out
-          <a href='/dashboard' className='link-primary fw-bolder'>
-            {' '}
-            Help Page
-          </a>
-          .
-        </div>
+ 
       </div>
 
       <div className='fv-row'>

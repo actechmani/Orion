@@ -20,11 +20,11 @@ import { AuditTrail } from '../Screens/AdminPortal/AuditTrail'
 import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfigurationManager'
 import ClusterSchedule from '../Screens/ClusterSchedule'
 import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
+import OnBoardpage from '../modules/auth/components/OnBoardpage'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
   const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
-  const AccountPage = lazy(() => import('../modules/accounts/AccountPage'))
   const WidgetsPage = lazy(() => import('../modules/widgets/WidgetsPage'))
   const ChatPage = lazy(() => import('../modules/apps/chat/ChatPage'))
   const UsersPage = lazy(() => import('../modules/apps/user-management/UsersPage'))
@@ -67,6 +67,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route path="onboard" element={<OnBoardpage />} />
         <Route
           path='cluster-service'
           element={
@@ -171,14 +172,7 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
-        <Route
-          path='crafted/account/*'
-          element={
-            <SuspensedView>
-              <AccountPage />
-            </SuspensedView>
-          }
-        />
+
         <Route
           path='apps/chat/*'
           element={

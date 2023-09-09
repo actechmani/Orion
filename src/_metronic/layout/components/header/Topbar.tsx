@@ -1,6 +1,6 @@
-import {FC} from 'react'
+import { FC } from 'react'
 import clsx from 'clsx'
-import {KTIcon, toAbsoluteUrl} from '../../../helpers'
+import { KTIcon, toAbsoluteUrl } from '../../../helpers'
 import {
   HeaderNotificationsMenu,
   HeaderUserMenu,
@@ -8,7 +8,8 @@ import {
   Search,
   ThemeModeSwitcher,
 } from '../../../partials'
-import {useLayout} from '../../core'
+import { useLayout } from '../../core'
+import { Link } from 'react-router-dom'
 
 const itemClass = 'ms-1 ms-lg-3',
   btnClass = 'btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px',
@@ -16,7 +17,7 @@ const itemClass = 'ms-1 ms-lg-3',
   btnIconClass = 'fs-1'
 
 const Topbar: FC = () => {
-  const {config} = useLayout()
+  const { config } = useLayout()
 
   return (
     <div className='d-flex align-items-stretch justify-self-end flex-shrink-0'>
@@ -77,9 +78,11 @@ const Topbar: FC = () => {
           data-kt-menu-attach='parent'
           data-kt-menu-placement='bottom-end'
         >
-          <KTIcon iconName='element-11' className={btnIconClass} />
+          <Link to="onboard">
+            <KTIcon iconName='element-11' className={btnIconClass} />
+          </Link>
         </div>
-        <QuickLinks />
+
         {/* end::Menu wrapper */}
       </div>
 
@@ -120,4 +123,4 @@ const Topbar: FC = () => {
   )
 }
 
-export {Topbar}
+export { Topbar }

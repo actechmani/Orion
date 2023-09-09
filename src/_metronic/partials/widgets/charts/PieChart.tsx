@@ -1,8 +1,6 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { KTIcon } from '../../../helpers';
-import { Dropdown1 } from '../../content/dropdown/Dropdown1';
 
 const PieChart: React.FC = () => {
     const chartData = {
@@ -40,7 +38,7 @@ const PieChart: React.FC = () => {
                             width: 200,
                         },
                         legend: {
-                            position: 'bottom',
+                            position: 'top',
                         },
                     },
                 },
@@ -49,7 +47,7 @@ const PieChart: React.FC = () => {
     };
 
     return (
-        <div className='card card-xl-stretch mb-xl-8 '>
+        <div className='card card-xl-stretch mb-xl-8  '>
             <div className='card-header border-0 pt-5'>
                 <h3 className='card-title align-items-start flex-column'>
                     <span className='card-label fw-bold fs-3 mb-1'>AWS Cost Recommendation</span>
@@ -57,7 +55,7 @@ const PieChart: React.FC = () => {
 
             </div>
             <div className='card-body'>
-                <div id='kt_charts_widget_1_chart' style={{ height: '350px' }} >
+                <div id='kt_charts_widget_1_chart' className="mt-5 " style={{ height: '350px' }} >
 
                     <ReactApexChart
                         options={chartData.options}
