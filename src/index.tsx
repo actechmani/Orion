@@ -5,7 +5,7 @@ import { Chart, registerables } from 'chart.js'
 import { QueryClient, QueryClientProvider } from 'react-query'
 // import { ReactQueryDevtools } from 'react-query/devtools'
 // Apps
-import { MetronicI18nProvider } from './_metronic/i18n/Metronici18n'
+
 import './_metronic/assets/fonticon/fonticon.css'
 import './_metronic/assets/keenicons/duotone/style.css'
 import './_metronic/assets/keenicons/outline/style.css'
@@ -44,10 +44,7 @@ if (container) {
   createRoot(container).render(
     // <AppContainer>
     <QueryClientProvider client={queryClient}>
-      <MetronicI18nProvider>
-        <Root />
-      </MetronicI18nProvider>
-
+      <Root />
     </QueryClientProvider>
     // </AppContainer>
   )
