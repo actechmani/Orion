@@ -8,7 +8,7 @@ export * from './feeds/FeedsWidget6'
 // mixed
 export * from './mixed/MixedWidget1'
 export * from './mixed/MixedWidget2'
-export * from './mixed/MixedWidget3'
+export * from './mixed/DashboadCardDetails'
 export * from './mixed/MixedWidget4'
 export * from './mixed/MixedWidget5'
 export * from './mixed/MixedWidget6'

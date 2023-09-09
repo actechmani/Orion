@@ -1,36 +1,14 @@
-import { useEffect } from 'react'
 import { useIntl } from 'react-intl'
 import { PageTitle } from '../../../_metronic/layout/core'
-import {
-    ListsWidget4,
-    ListsWidget5,
-    TablesWidget10,
-    MixedWidget8,
-    MixedWidget5,
-    ChartsWidget1,
-    CardDesign,
-
-
-} from '../../../_metronic/partials/widgets';
-import ApexChart from '../../../_metronic/partials/widgets/charts/ChartsWidget4';
+import { ChartsWidget1 } from '../../../_metronic/partials/widgets';
 import PieChart from '../../../_metronic/partials/widgets/charts/PieChart';
-
+import { CardDesign } from "../../../_metronic/partials/widgets/mixed/DashboadCardDetails"
 
 const DashboardPage = () => {
-    useEffect(() => {
-        // We have to show toolbar only for dashboard page
-        document.getElementById('kt_layout_toolbar')?.classList.remove('d-none')
-        return () => {
-            document.getElementById('kt_layout_toolbar')?.classList.add('d-none')
-        }
-    }, [])
-
     return (
         <>
-            {/* begin::Row  */}
-            <div className='row g-5 g-xl-8'>
 
-                {/* begin::Col  */}
+            <div className='row g-5 g-xl-8'>
                 <div className='col-xxl-4'>
                     <div className='row g-5 g-xl-8'>
                         <div className='col-xl-6'>
