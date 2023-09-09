@@ -74,7 +74,7 @@ const AsideMenuItem: FC<Props & WithChildren> = ({
                   <KTIcon iconName={icon} className='fs-2' />
                 </span>
               )}
-              {fontIcon && aside.menuIcon === 'font' ? (
+              {fontIcon ? (
                 <span className='menu-icon me-0'>
                   {fontIcon === 'BiSolidDashboard' &&
                     <BiSolidDashboard size={20} />

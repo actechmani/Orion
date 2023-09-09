@@ -1,23 +1,18 @@
-import createSagaMiddleware from 'redux-saga'
-import {applyMiddleware, compose, legacy_createStore as createStore} from 'redux'
-// import {createBrowserHistory} from 'history'
-import thunk from 'redux-thunk'
-import rootSaga from './saga'
-import createRootReducer from './reducer'
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from './reducer';
+import createSagaMiddleware from 'redux-saga';
+import { fetchTenantListSaga } from './saga'
 
-// export const history = createBrowserHistory()
-const sagaMiddleware = createSagaMiddleware()
-const middlewares = [thunk, sagaMiddleware]
-const rootReducer = createRootReducer()
+const saga = createSagaMiddleware();
 
-export default function configureStore() {
-  const store = createStore(
-    rootReducer, // root reducer with router state
-    // WithDevTools
-    compose(applyMiddleware(...middlewares))
-  )
+const middleware = [saga];
 
-  sagaMiddleware.run(rootSaga)
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(middleware),
+});
 
-  return store
-}
+saga.run(fetchTenantListSaga)
+
+export { store };

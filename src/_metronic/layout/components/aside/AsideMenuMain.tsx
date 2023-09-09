@@ -1,10 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { useIntl } from 'react-intl'
 import { AsideMenuItemWithSubMain } from './AsideMenuItemWithSubMain'
 import { AsideMenuItem } from './AsideMenuItem';
 
 export function AsideMenuMain() {
-  const intl = useIntl()
+
   return (
     <>
       <AsideMenuItem

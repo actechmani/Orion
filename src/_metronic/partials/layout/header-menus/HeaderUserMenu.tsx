@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Languages } from './Languages'
+
 import { toAbsoluteUrl } from '../../../helpers'
 import { useOktaAuth } from '@okta/okta-react'
 
@@ -123,7 +123,6 @@ const HeaderUserMenu: FC = () => {
 
       <div className='separator my-2'></div>
 
-      <Languages />
 
       <div className='menu-item px-5 my-1'>
         <Link to='/crafted/account/settings' className='menu-link px-5'>

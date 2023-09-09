@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { useIntl } from 'react-intl'
 import { PageTitle } from '../../../_metronic/layout/core'
 import {
     ListsWidget4,
@@ -15,21 +14,32 @@ import {
 import ApexChart from '../../../_metronic/partials/widgets/charts/ChartsWidget4';
 import PieChart from '../../../_metronic/partials/widgets/charts/PieChart';
 
+import {useSelector, useDispatch} from 'react-redux';
+import {getTenantList} from '../../store/reducer/tenentReducer';
+
+
 
 const DashboardPage = () => {
+    const dispatch = useDispatch();
+    const tenantList = useSelector((state:any) => state.tenant.tenants)
+
     useEffect(() => {
         // We have to show toolbar only for dashboard page
         document.getElementById('kt_layout_toolbar')?.classList.remove('d-none')
         return () => {
             document.getElementById('kt_layout_toolbar')?.classList.add('d-none')
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        dispatch(getTenantList());
+        console.log("tenantList", tenantList)
+    }, [dispatch])
 
     return (
         <>
             {/* begin::Row  */}
             <div className='row g-5 g-xl-8'>
-
                 {/* begin::Col  */}
                 <div className='col-xxl-4'>
                     <div className='row g-5 g-xl-8'>
@@ -53,10 +63,10 @@ const DashboardPage = () => {
 }
 
 const DashboardWrapper = () => {
-    const intl = useIntl()
+    
     return (
         <>
-            <PageTitle breadcrumbs={[]}>{intl.formatMessage({ id: 'MENU.DASHBOARD' })}</PageTitle>
+            <PageTitle breadcrumbs={[]}>Dashboard</PageTitle>
             <DashboardPage />
         </>
     )

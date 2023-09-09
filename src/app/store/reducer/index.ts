@@ -1,11 +1,7 @@
-import {combineReducers} from 'redux'
+import tenantReducer from './tenentReducer';
 
-const createRootReducer = () => {
-  return combineReducers({
-    // Combine your reducers here
-    // For example:
-    // someSlice: someReducer,
-  })
+const rootReducer =  {
+  tenant: tenantReducer
 }
 
-export default createRootReducer
+export {rootReducer}
