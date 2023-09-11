@@ -1,14 +1,14 @@
-import {useEffect} from 'react'
-import {Outlet, useLocation} from 'react-router-dom'
-import {AsideDefault} from './components/aside/AsideDefault'
- import {HeaderWrapper} from './components/header/HeaderWrapper'
+import { useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { AsideDefault } from './components/aside/AsideDefault'
+import { HeaderWrapper } from './components/header/HeaderWrapper'
 // import {Toolbar} from './components/toolbar/Toolbar'
 // import {RightToolbar} from '../partials/layout/RightToolbar'
-import {ScrollTop} from './components/ScrollTop'
-import {Content} from './components/Content'
-import {PageDataProvider} from './core'
-import {ActivityDrawer, DrawerMessenger, InviteUsers, UpgradePlan} from '../partials'
-import {MenuComponent} from '../assets/ts/components'
+import { ScrollTop } from './components/ScrollTop'
+import { Content } from './components/Content'
+import { PageDataProvider } from './core'
+import { ActivityDrawer, DrawerMessenger, InviteUsers } from '../partials'
+import { MenuComponent } from '../assets/ts/components'
 
 const MasterLayout = () => {
   const location = useLocation()
@@ -38,7 +38,7 @@ const MasterLayout = () => {
               </Content>
             </div>
             {/* end::Content */}
-            
+
           </div>
           {/* end::Wrapper */}
         </div>
@@ -53,11 +53,11 @@ const MasterLayout = () => {
 
       {/* begin:: Modals */}
       <InviteUsers />
-      <UpgradePlan />
+
       {/* end:: Modals */}
       <ScrollTop />
     </PageDataProvider>
   )
 }
 
-export {MasterLayout}
+export { MasterLayout }

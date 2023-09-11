@@ -33,7 +33,7 @@ export * from './lists/ListsWidget8'
 export * from './lists/ListsWidget9'
 
 // statistics
-export * from './statistics/StatisticsWidget1' 
+export * from './statistics/StatisticsWidget1'
 
 // charts
 export * from './charts/ChartsWidget1'
@@ -64,11 +64,6 @@ export * from './tables/TablesWidget13'
 export * from './engage/EngageWidget1'
 export * from './engage/EngageWidget2'
 export * from './engage/EngageWidget3'
-
-// feeds
-export * from './feeds/FeedsWidget2'
-export * from './feeds/FeedsWidget3'
-export * from './feeds/FeedsWidget4'
 
 // tiles
 export * from './tiles/TilesWidget1'

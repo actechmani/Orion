@@ -6,13 +6,14 @@ import { FaAws } from 'react-icons/fa'
 import { SiGooglecloud } from "react-icons/si";
 import { SiMicrosoftazure } from "react-icons/si";
 import { toAbsoluteUrl } from '../../../helpers';
+import { useNavigate } from 'react-router-dom';
 type Props = {
   className: string
 
 }
 
 const CardDesign: React.FC<Props> = () => {
-
+  const navigate = useNavigate();
   const cloudTech = (tech) => {
     switch (tech) {
       case "AWS":
@@ -37,7 +38,7 @@ const CardDesign: React.FC<Props> = () => {
               <div className="card-body p-0">
 
                 <div className={`mixed-widget-12-chart card-rounded-bottom  `} >
-                  <img className=" card-rounded-top w-100  " src={toAbsoluteUrl('/media/orionImage/cluster.png')} />
+                  <img className=" card-rounded-top w-100  " src={toAbsoluteUrl(dashboard.image)} />
                 </div>
 
                 <div className='card-rounded bg-body mt-n10 position-relative card-px py-5 ' style={{ height: "100%" }} >
@@ -51,7 +52,7 @@ const CardDesign: React.FC<Props> = () => {
                         dashboard.text.map((content, id): any => (
                           <React.Fragment key={id}>
                             {dashboard?.name === "Cloud Management service" ? (
-                              <span style={{ color: '#8f52ebff' }} className=' mx-5'  >
+                              <span style={{ color: '#8f52ebff' }} className='mt-3 mx-3'  >
                                 {cloudTech(content)}
                               </span>
                             ) : (
@@ -71,7 +72,7 @@ const CardDesign: React.FC<Props> = () => {
                       )}
                     </div>
                     <div style={{ marginTop: "auto" }}>
-                      <button className="btn btn-primary btn-sm"  >View</button>
+                      <button className="btn btn-primary btn-sm float-end" onClick={() => navigate(dashboard.navigation)} >View</button>
                     </div>
                     {/* </div> */}
                   </div>
