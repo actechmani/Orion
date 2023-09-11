@@ -25,11 +25,12 @@ export class HttpInterceptor {
 //   }
 
   private _requestCallBack(config: any): any {
+    console.log("token",sessionStorage.getItem('okta-token'))
     config.headers = {
       accept: 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('okta-token')}`,
+      Authorization: `Bearer ${sessionStorage.getItem('okta-token')}`,
       'Access-Control-Allow-Origin': '*',
-      'x-tenant-id': localStorage.getItem('tenantId') || null,
+      'x-tenant-id': sessionStorage.getItem('tenantId') || null,
       ...config.headers, // Preserve existing headers
     }
     return config

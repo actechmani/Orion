@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { rootReducer } from './reducer';
 import createSagaMiddleware from 'redux-saga';
-import { fetchTenantListSaga } from './saga'
+import { rootSaga } from './saga'
 
 const saga = createSagaMiddleware();
 
@@ -13,6 +13,6 @@ const store = configureStore({
     getDefaultMiddleware().concat(middleware),
 });
 
-saga.run(fetchTenantListSaga)
+saga.run(rootSaga)
 
 export { store };
