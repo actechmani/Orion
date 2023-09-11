@@ -21,6 +21,7 @@ import { PrivateRoutes } from './PrivateRoutes';
   const { oktaAuth, authState } = useOktaAuth();
 
   useEffect(() => {
+
     if (!authState) {
       return;
     }
@@ -30,6 +31,17 @@ import { PrivateRoutes } from './PrivateRoutes';
       oktaAuth.setOriginalUri(originalUri);
       oktaAuth.signInWithRedirect();
     }
+    console.log("authState", authState)
+
+    if(authState.accessToken) {
+      sessionStorage.setItem('okta-token', authState.accessToken?.accessToken);
+    }
+    if(authState.idToken) {
+      sessionStorage.setItem('okta-IdToken', authState.idToken.idToken);
+    }
+    
+    
+    
   }, [oktaAuth, !!authState, authState?.isAuthenticated]);
 
   if (!authState || !authState?.isAuthenticated) {

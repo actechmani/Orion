@@ -12,7 +12,7 @@ const KTIcon: React.FC<Props> = ({className = '', iconType, iconName}) => {
   if (!iconType) {
     iconType = getLayout().main?.iconType
   }
-console.log("iconName", className)
+
   return (
     <i className={`ki-${iconType} ki-${iconName}${className && ' ' + className}`}>
       {iconType === 'duotone' &&

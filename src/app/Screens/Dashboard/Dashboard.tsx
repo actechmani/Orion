@@ -1,22 +1,8 @@
 import { PageTitle } from '../../../_metronic/layout/core'
 import { CardDesign, ChartsWidget1 } from '../../../_metronic/partials/widgets';
 import PieChart from '../../../_metronic/partials/widgets/charts/PieChart';
-import { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { getTenantList } from '../../store/reducer/tenentReducer';
-
-
 
 const DashboardPage = () => {
-    const dispatch = useDispatch();
-    const tenantList = useSelector((state: any) => state.tenant.tenants)
-
-
-
-    useEffect(() => {
-        dispatch(getTenantList());
-        console.log("tenantList", tenantList)
-    }, [dispatch])
 
     return (
         <>

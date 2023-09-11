@@ -1,6 +1,7 @@
 import { HttpInterceptor } from './httpInterceptor';
 
-const baseURL = `${process.env.API_URL}:${process.env.API_PORT}/${process.env.API_BASE_URL}/`
+const baseURL = `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_API_PORT}/${process.env.REACT_APP_API_BASE_URL}/`;
+
 
 export default class HTTPRequestHandler {
     static request = new HttpInterceptor(baseURL).getRequest()
