@@ -2,70 +2,22 @@ import { HttpInterceptor } from './httpInterceptor';
 
 const baseURL = `${process.env.REACT_APP_API_URL}:${process.env.REACT_APP_API_PORT}/${process.env.REACT_APP_API_BASE_URL}/`;
 
+export class HTTPRequestHandler {
+    static request = new HttpInterceptor(baseURL).getRequest();
 
-export default class HTTPRequestHandler {
-    static request = new HttpInterceptor(baseURL).getRequest()
+    static get = (url, headers = {}) => HTTPRequestHandler.request.get(url, headers);
 
-    static get = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.get(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
+    static post = (url, payload, headers = {}) => HTTPRequestHandler.request.post(url, payload, headers);
 
-    static post = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.post(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
+    static put = (url, payload, headers = {}) => HTTPRequestHandler.request.put(url, payload, headers);
 
-    static put = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.put(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
-    static delete = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.delete(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
+    static delete = (url, headers = {}) => HTTPRequestHandler.request.delete(url, headers);
 
-    static patch = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.patch(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
+    static patch = (url, payload, headers = {}) => HTTPRequestHandler.request.patch(url, payload, headers);
 
-    static head = (
-        url: string,
-        payload?: any, // Define the payload type or use 'any' if it can vary
-        headers: Record<string, string> = {}
-    ): Promise<any> =>
-        HTTPRequestHandler.request.head(url, {
-            data: payload, // Pass the payload as 'data' property
-            headers: headers, // Pass the headers as 'headers' property
-        })
+    static head = (url, headers = {}) => HTTPRequestHandler.request.head(url, headers);
 
     static redirectTo = (path) => {
-        document.location = path
-    }
+        document.location = path;
+    };
 }

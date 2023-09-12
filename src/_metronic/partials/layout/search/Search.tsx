@@ -7,6 +7,7 @@ import _isEmpty from 'lodash/isEmpty';
 import _toLowerCase from 'lodash/toLower';
 import _filter from 'lodash/filter';
 import _sortBy from 'lodash/sortBy';
+import _get from 'lodash/get';
 
 const Search: FC = () => {
   const [menuState, setMenuState] = useState<'main'>('main')
@@ -49,6 +50,9 @@ const Search: FC = () => {
 
   const selectTenant = (tenant: Tenants) => {
     console.log("tenant", tenant)
+    window.sessionStorage.setItem('tenantId', _get(tenant, 'tenantId', null));
+    window.localStorage.setItem('tenantName', _get(tenant, 'tenantName', null));
+    // element.current!.classList.remove('show menu-dropdown')
   }
 
 

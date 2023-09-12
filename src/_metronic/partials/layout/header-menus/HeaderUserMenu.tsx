@@ -10,7 +10,10 @@ const HeaderUserMenu: FC = () => {
   const logoutOcta = async () => {
     console.log("window.origin", window.origin)
     try {
+      window.sessionStorage.clear();
+      window.localStorage.clear();
       await oktaAuth.signOut();
+
     } catch (e) {
       console.log(e);
     }

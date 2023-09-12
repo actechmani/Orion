@@ -21,6 +21,7 @@ import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfiguration
 import ClusterSchedule from '../Screens/ClusterSchedule'
 import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
 import OnBoardpage from '../modules/auth/components/OnBoardpage'
+import ViewCluster from '../Screens/Cluster/View-cluster/view-cluster'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -75,6 +76,15 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+        <Route
+          path='view-cluster-information'
+          element={
+            <SuspensedView>
+              <ViewCluster />
+            </SuspensedView>
+          }
+        />
+
         <Route
           path='foundation-components'
           element={

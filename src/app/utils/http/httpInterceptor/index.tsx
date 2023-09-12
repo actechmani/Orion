@@ -1,84 +1,84 @@
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios'
-import _get from 'lodash/get'
+import axios from 'axios';
+import _get from 'lodash/get';
 
 export class HttpInterceptor {
-  private _request: AxiosInstance
+  _request: any = null;
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl) {
     this._request = axios.create({
       baseURL: baseUrl,
-      withCredentials: true,
-    })
-    this._configInterceptRequest()
-    this._configInterceptResponse()
+    });
+    this._configInterceptRequest();
+    this._configInterceptResponse();
   }
 
-  private _configInterceptResponse = () => {
-    this._request.interceptors.response.use(this._handleSuccess, this._handleError)
-  }
+  _configInterceptResponse = () => {
+    this._request.interceptors.response.use(this._handleSuccess, this._handleError);
+  };
 
-  private _configInterceptRequest = () => {
-    this._request.interceptors.request.use(this._requestCallBack)
-}
+  _configInterceptRequest = () => {
+    this._request.interceptors.request.use(this._requestCallBack);
+  };
 
-//     this._request.interceptors.request.use(this._requestCallBack)
-//   }
-
-  private _requestCallBack(config: any): any {
-    console.log("token",sessionStorage.getItem('okta-token'))
+  _requestCallBack = (config) => {
     config.headers = {
       accept: 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('okta-token')}`,
+      Authorization: `Bearer ${localStorage.getItem('okta-token')}`,
       'Access-Control-Allow-Origin': '*',
-      'x-tenant-id': sessionStorage.getItem('tenantId') || null,
-      ...config.headers, // Preserve existing headers
-    }
-    return config
-  }
+      'x-tenant-id': localStorage.getItem('tenantId') || null,
+      'x-user-id': localStorage.getItem('x-userId') || null,
+    };
+    return config;
+  };
 
-  private _handleSuccess = (res: AxiosResponse): AxiosResponse => {
-    return res
-  }
+  _handleSuccess = (res) => {
+    return res;
+  };
 
-  private _showModal = (title: string, message: string): void => {
-    const modalElement = document.createElement('div')
-    modalElement.classList.add('modal')
+  _showModal = (title: string, message: string) => {
+
+    const modalElement = document.createElement('div');
+    modalElement.classList.add('modal');
     modalElement.innerHTML = `
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>${title}</h3>
-        </div>
-        <div class="modal-body">
-          <p class="text-center">${message}</p>
-        </div>
-      </div>
-    `
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 >${title}</h3>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">${message}</p>
+            </div>
+          </div>
+        `;
 
-    document.body.appendChild(modalElement)
-  }
+    document.body.appendChild(modalElement);
+  };
 
-  private _handleError = (error: any): Promise<any> => {
+  _handleError = (error) => {
     switch (error.response?.status) {
       case 401:
-        if (!localStorage.getItem('tenantId')) {
-          this._showModal('Error', 'Tenant Id is Empty, please contact admin')
-          break
-        } else {
-          window.localStorage.clear()
-          this.redirectTo('/')
-          break
+        if (sessionStorage.getItem('tenantId')?.length == 0) {
+          this._showModal('Error', _get(error, 'message', 'Tenant Id is Empty, please contact admin'));
+          break;
+        }
+        else {
+          // window.sessionStorage.clear()
+          // this.redirectTo(document, '/');
+          break;
         }
 
+      case 400:
+        console.log("400 log");
+        console.log(error);
+        break;
       default:
-        break
+        break;
     }
-    return Promise.reject(error)
-  }
+    return Promise.reject(error);
+  };
 
-  private redirectTo = (path: string): void => {
-    window.location.href = path
-  }
+  redirectTo = (document, path) => {
+    document.location = path;
+  };
 
-  getRequest = (): AxiosInstance => this._request
+  getRequest = () => this._request;
 }
-
