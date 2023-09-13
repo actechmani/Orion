@@ -2109,4 +2109,4 @@ const nodeGroupSchedule = [
     }
 ]
 
-export { TenantList, ClusterList, clusterDetail }
+export { TenantList, ClusterList, clusterDetail, nodeGroupSchedule }

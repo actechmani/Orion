@@ -4,7 +4,7 @@ import {
     getAllClusterServices, getAllClusterSchedules, getClusterDetailedInformation,
     postClusterInformation, getNodeGroupActivities
 } from '../service/cluster.service';
-import { ClusterList } from './MockData'
+import { ClusterList, clusterDetail } from './MockData'
 
 export function* getClusterListSaga(action: PayloadAction<any>) {
     const payload = action.payload;
@@ -103,6 +103,7 @@ const clusterSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
             state.clusterList = ClusterList.results;
+            state.clusterDetailedInformation = clusterDetail;
 
         },
         sagaClusterListSuccess(state, action: PayloadAction<any>) {

@@ -1,7 +1,6 @@
 import React from 'react'
 import icons from '../icons-config/icons'
-import {getLayout} from '../../layout/core'
-
+import {DefaultLayoutConfig} from '../../layout/core'
 type Props = {
   className?: string
   iconType?: 'duotone' | 'solid' | 'outline'
@@ -10,7 +9,7 @@ type Props = {
 
 const KTIcon: React.FC<Props> = ({className = '', iconType, iconName}) => {
   if (!iconType) {
-    iconType = getLayout().main?.iconType
+    iconType =DefaultLayoutConfig.main?.iconType
   }
 
   return (
