@@ -18,7 +18,7 @@ import ServiceIndex from '../Screens/Service'
 import { Entitlements } from '../Screens/AdminPortal/Entitlements'
 import { AuditTrail } from '../Screens/AdminPortal/AuditTrail'
 import { AppConfigurationManager } from '../Screens/AdminPortal/AppConfigurationManager'
-import ClusterSchedule from '../Screens/ClusterSchedule'
+// import ClusterSchedule from '../Screens/ClusterSchedule'
 import { DashboardWrapper } from '../Screens/Dashboard/Dashboard'
 import OnBoardpage from '../modules/auth/components/OnBoardpage'
 import ViewCluster from '../Screens/Cluster/View-cluster/view-cluster'
@@ -28,6 +28,7 @@ const PrivateRoutes = () => {
   const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
   const WidgetsPage = lazy(() => import('../modules/widgets/WidgetsPage'))
   const UsersPage = lazy(() => import('../modules/apps/user-management/UsersPage'))
+  const ClusterSchedular = lazy(() => import('../Screens/ClusterSchedule'))
 
   return (
     <Routes>
@@ -59,6 +60,8 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
+
+
         <Route
           path='env-schedule'
           element={
@@ -110,10 +113,10 @@ const PrivateRoutes = () => {
           }
         />
         <Route
-          path='cluster-schedule'
+          path='cluster-schedule/*'
           element={
             <SuspensedView>
-              <ClusterSchedule />
+              <ClusterSchedular />
             </SuspensedView>
           }
         />

@@ -8,9 +8,7 @@ import Icons from '../../Icons'
 type Props = {
   to: string
   title: string
-  icon?: string
-  fontIcon?: string
-  hasBullet?: boolean
+  icon?: string 
 }
 
 const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
@@ -18,8 +16,6 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
   to,
   title,
   icon,
-  fontIcon,
-  hasBullet,
 }) => {
   const { pathname } = useLocation()
   const isActive = checkIsActive(pathname, to)
@@ -39,7 +35,7 @@ const AsideMenuItemWithSub: FC<Props & WithChildren> = ({
         <span className='menu-icon text-black'>
           <IconComponent />
         </span>
-       
+
 
         <span className='menu-title'>{title}</span>
         <span className='menu-arrow'></span>

@@ -12,7 +12,6 @@ type Props = {
   title: string
   icon?: string
   fontIcon?: string
-  hasBullet?: boolean
   bsTitle?: string
 }
 
@@ -21,67 +20,63 @@ const AsideMenuItemWithSubMain: FC<Props & WithChildren> = ({
   to,
   title,
   icon,
-  fontIcon,
-  hasBullet,
   bsTitle,
+  fontIcon,
 }) => {
   const { pathname } = useLocation()
   const isActive = checkIsActive(pathname, to)
   const { config } = useLayout()
   const { aside } = config
+  console.log("isActive", isActive)
   return (
     <div
       className={clsx('menu-item py-3', { 'here show': isActive })}
-      data-kt-menu-trigger='click'
+      data-kt-menu-trigger='hover'
       data-kt-menu-placement='right-start'
     >
-      <OverlayTrigger
-        placement='right'
-        delay={{ show: 250, hide: 400 }}
-        overlay={(props) => (
-          <Tooltip id='button-tooltip' {...props}>
-            {bsTitle}
-          </Tooltip>
+
+      <span className='menu-link menu-center'>
+        {fontIcon && (
+          <span className='menu-icon me-0 '>
+            {
+              fontIcon === 'FaCloud' &&
+              <FaCloud size={20} ></FaCloud>
+
+
+            }
+
+            {
+              fontIcon === 'FaAnchor' &&
+              <FaAnchor size={20} />
+            }
+
+            {
+              fontIcon === 'FaDocker' &&
+              <FaDocker size={20} />
+            }
+
+            {
+              fontIcon === 'FaServicestack' &&
+              <FaServicestack size={20} />
+            }
+
+            {
+              fontIcon === 'FaHubspot' &&
+              <FaHubspot size={20} />
+            }
+
+            {
+              fontIcon === 'RiSettings3Fill' &&
+              <RiSettings3Fill size={20} />
+            }
+
+
+
+          </span>
+
         )}
-      >
-        <span className='menu-link menu-center'>
-          {fontIcon  && (
-            <span className='menu-icon me-0 '>
-              {
-                fontIcon === 'FaCloud' &&
-                <FaCloud size={20}/>
-              }
-              {
-                fontIcon === 'FaAnchor' &&
-                <FaAnchor size={20}/>
-              }
-
-              {
-                fontIcon === 'FaDocker' &&
-                <FaDocker size={20}/>
-              }
-
-              {
-                fontIcon === 'FaServicestack' &&
-                <FaServicestack size={20}/>
-              }
-
-              {
-                fontIcon === 'FaHubspot' &&
-                <FaHubspot size={20}/>
-              }
-
-              {
-                fontIcon === 'RiSettings3Fill' &&
-                <RiSettings3Fill size={20}/>
-              }
-
-
-
-            </span>
-          )}
-        </span>
-      </OverlayTrigger>
+      </span>
+      <span style={{ fontSize: "10px" }} className='d-flex justify-content-center'>  {bsTitle}</span>
       <div
         className={clsx('menu-sub menu-sub-dropdown w-225px w-lg-275px px-1 py-4', {
           'menu-active-bg': isActive,
