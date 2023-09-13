@@ -62,7 +62,7 @@ function ViewCluster() {
                 </Card.Header>
                 <Card.Body>
 
-                    {/* <BasicTabs /> */}
+                    <BasicTabs />
                     <Tabs
                         className="mb-3"
                         onSelect={(tabName) => {
