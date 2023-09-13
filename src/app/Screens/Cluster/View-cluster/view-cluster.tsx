@@ -13,8 +13,11 @@ import NodeGroups from './component/NodeGroups';
 import ClusterActivity from './component/ClusterActivity';
 import { getClusterSchedule, getClusterInfo } from '../../../store/reducer/clusterReducer';
 import './style.scss';
+import { useNavigate } from 'react-router-dom';
+import { BasicTabs } from '../demo'
 
 function ViewCluster() {
+    const navigate = useNavigate();
     const locality = useLocation();
     const [clusterid, setClusterId] = React.useState();
     const dispatch = useDispatch();
@@ -46,17 +49,20 @@ function ViewCluster() {
         <div className="mt-4 mx-4">
             <Card>
                 <Card.Header>
-                    <span>
+                    <span className='d-flex justify-content-between align-items-center'>
                         <IoIosArrowBack
                             size={20}
                             style={{ marginRight: '20px', marginBottom: '5px' }}
+                            onClick={() => navigate('/cluster-service')}
                         // onClick={() => history.push('/cluster-service')}
                         />
                     </span>
 
-                    <h4 className="d-inline-block">Cluster: {locality?.state?.cluster?.name}</h4>
+                    <h4 className="d-flex justify-content-between align-items-center d-inline-block">Cluster: {locality?.state?.cluster?.name}</h4>
                 </Card.Header>
                 <Card.Body>
+
+                    {/* <BasicTabs /> */}
                     <Tabs
                         className="mb-3"
                         onSelect={(tabName) => {

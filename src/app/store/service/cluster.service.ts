@@ -2,10 +2,8 @@ import { HTTPRequestHandler } from '../../utils/http';
 import { Apis } from './apiEndpoint';
 import _get from 'lodash/get';
 
-const fetchClusterAPI = async () => {
-    const response = await HTTPRequestHandler.post(Apis.cluster.list, {});
-    return response;
-};
+
+const getAllClusterServices = (payload = {}) => HTTPRequestHandler.post(Apis.cluster.list, payload);
 
 const getAllClusterSchedules = (payload = {}) => HTTPRequestHandler.post(Apis.clusterSchedule.list, payload);
 
@@ -17,4 +15,4 @@ const postClusterInformation = (payload = {}) => HTTPRequestHandler.post(Apis.cl
 const getNodeGroupActivities = (payload) => HTTPRequestHandler.post(Apis.clusterSchedule.nodeGroupActivity, payload);
 
 
-export { fetchClusterAPI, getAllClusterSchedules, getClusterDetailedInformation, postClusterInformation, getNodeGroupActivities }
+export { getAllClusterServices, getAllClusterSchedules, getClusterDetailedInformation, postClusterInformation, getNodeGroupActivities }

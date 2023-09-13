@@ -1,15 +1,16 @@
 import { createAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { call, put } from "redux-saga/effects";
 import {
-    fetchClusterAPI, getAllClusterSchedules, getClusterDetailedInformation,
+    getAllClusterServices, getAllClusterSchedules, getClusterDetailedInformation,
     postClusterInformation, getNodeGroupActivities
 } from '../service/cluster.service';
 import { ClusterList } from './MockData'
 
-export function* getClusterListSaga() {
+export function* getClusterListSaga(action: PayloadAction<any>) {
+    const payload = action.payload;
     yield put(sagaClusterListLoad());
     try {
-        const response = yield call(fetchClusterAPI);
+        const response = yield call(getAllClusterServices, payload);
         yield put(sagaClusterListSuccess(response.data))
     } catch (error: any) {
         yield put(sagaClusterListFailure(error.message))
@@ -57,6 +58,7 @@ export function* nodeGroupActivitiesSaga(action: PayloadAction<any>): any {
         const response = yield call(getNodeGroupActivities(payload));
         yield put(sagaNodeGroupActivitiesSuccess(response.data))
     } catch (error: any) {
+        console.log("error", error)
         yield put(sagaClusterListFailure(error.message))
     }
 }
@@ -127,7 +129,7 @@ const clusterSlice = createSlice({
 
     }
 })
-const getClusterList = createAction("getClusterListAction");
+const getClusterList = createAction<any>("getClusterListAction");
 const getClusterSchedule = createAction("getClusterScheduleAction");
 const getClusterInfo = createAction<any>("getClusterInfoAction");
 const getClusterRefreshInfo = createAction<any>("getClusterRefreshAction");
