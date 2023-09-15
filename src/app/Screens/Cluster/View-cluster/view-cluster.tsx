@@ -4,7 +4,6 @@ import _get from 'lodash/get';
 import _cloneDeep from 'lodash/cloneDeep';
 import _isEmpty from 'lodash/isEmpty';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import { viewClusterInitialState } from './constants';
 import { IoIosArrowBack } from 'react-icons/io';
 import Overview from './component/Overview';
@@ -13,11 +12,18 @@ import NodeGroups from './component/NodeGroups';
 import ClusterActivity from './component/ClusterActivity';
 import { getClusterSchedule, getClusterInfo } from '../../../store/reducer/clusterReducer';
 import './style.scss';
+import { useNavigate } from 'react-router-dom';
+import { BasicTabs } from '../demo';
+import { OverviewCluster } from './overview';
+import { Link, useLocation } from 'react-router-dom'
 
 function ViewCluster() {
+    const navigate = useNavigate();
     const locality = useLocation();
     const [clusterid, setClusterId] = React.useState();
     const dispatch = useDispatch();
+    const [active, setActive] = React.useState<any>('detail')
+
     const [state, setState] = React.useState(viewClusterInitialState);
     const [activeTabName, setActiveTabName] = React.useState<any>('overView');
     const { clusterDetailedInformation } = useSelector((state: any) => state.cluster);
@@ -44,60 +50,99 @@ function ViewCluster() {
 
     return (
         <div className="mt-4 mx-4">
+            <OverviewCluster />
+
             <Card>
-                <Card.Header>
-                    <span>
-                        <IoIosArrowBack
-                            size={20}
-                            style={{ marginRight: '20px', marginBottom: '5px' }}
-                        // onClick={() => history.push('/cluster-service')}
-                        />
-                    </span>
-
-                    <h4 className="d-inline-block">Cluster: {locality?.state?.cluster?.name}</h4>
-                </Card.Header>
+              
                 <Card.Body>
-                    <Tabs
-                        className="mb-3"
-                        onSelect={(tabName) => {
-                            setActiveTabName(tabName);
-                            // localStorage.setItem('activeCluster', tabName);
-                        }}
-                    >
-                        <Tab eventKey="overView" title="Overview">
-                            {activeTabName === 'overView' && <Overview clusterDetails={state} />}
-                        </Tab>
-                        <Tab eventKey="details" title="Details">
-                            {activeTabName === 'details' && <Details clusterDetails={state} />}
-                        </Tab>
-                        <Tab eventKey="nodeGroups" title="Node Groups">
-                            {activeTabName === 'nodeGroups' && <NodeGroups />}
-                        </Tab>
-                        <Tab eventKey={'activity'} title={'Cluster Activity'}>
-                            {activeTabName === 'activity' && (
-                                <ClusterActivity clusterDetailedInformation={clusterDetailedInformation} />
-                            )}
-                        </Tab>
-                        <Tab eventKey={'helmActivities'} title={'Helm Activities'}>
-                            {activeTabName === 'helmActivities' && (
-                                <div>test2</div>
-                                // <HelmActivities clusterDetailedInformation={clusterDetailedInformation} />
-                            )}
-                        </Tab>
-                        <Tab eventKey={'clusterCost'} title={'Cluster Cost'}>
-                            {activeTabName === 'clusterCost' && (
-                                <div>test3</div>
-                                // <CostManagement clusterDetailedInformation={clusterDetailedInformation} />
-                            )}
-                        </Tab>
+                    <div className='d-flex overflow-auto h-55px'>
+                        <ul className='nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder flex-nowrap mb-5'>
+                            <li key="detail"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("detail")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "detail" && 'active')}>
+                                    Details
+                                </a>
 
-                        <Tab eventKey="recommendations" title="Recommendations">
-                            {activeTabName === 'recommendations' && (
-                                <div>test4</div>
-                                // <Recommendations clusterId={clusterid} clusterDetails={state} />
-                            )}
-                        </Tab>
-                    </Tabs>
+                            </li>
+
+                            <li key="nodegroup"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("nodegroup")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "nodegroup" && 'active')}>
+                                    Node Groups
+                                </a>
+
+                            </li>
+                            <li key="clusteractivity"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("clusteractivity")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "clusteractivity" && 'active')}>
+                                    Cluster Activity
+                                </a>
+                            </li>
+
+                            <li key="helmactivity"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("helmactivity")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "helmactivity" && 'active')}>
+                                    Helm Activities
+                                </a>
+                            </li>
+
+                            <li key="clustercost"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("clustercost")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "clustercost" && 'active')}>
+                                    Cluster Cost
+                                </a>
+                            </li>
+
+                            <li key="recommand"
+                                className={`nav-item`}
+                            >
+                                <a onClick={() => setActive("recommand")} className={
+                                    `nav-link text-active-primary me-6 ` +
+                                    (active === "recommand" && 'active')}>
+                                    Recommendations
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    {active === 'detail' && <Details clusterDetails={state} />}
+                    {active === 'nodegroup' && <NodeGroups />}
+                    {active === 'clusteractivity' && (
+                        <ClusterActivity clusterDetailedInformation={clusterDetailedInformation} />
+                    )}
+
+                    {active === 'helmactivity' && (
+                        <div>test2</div>
+                        // <HelmActivities clusterDetailedInformation={clusterDetailedInformation} />
+                    )}
+
+                    {active === 'clustercost' && (
+                        <div>test3</div>
+                        // <CostManagement clusterDetailedInformation={clusterDetailedInformation} />
+                    )}
+
+                    {active === 'recommand' && (
+                        <div>test4</div>
+                        // <Recommendations clusterId={clusterid} clusterDetails={state} />
+                    )}
+
+                  
                 </Card.Body>
             </Card>
         </div>

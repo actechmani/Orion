@@ -15,7 +15,7 @@ import {DefaultLayoutConfig} from './DefaultLayoutConfig'
 const LAYOUT_CONFIG_KEY = 'LayoutConfig'
 
 export function getLayout(): ILayout {
-  const ls = localStorage.getItem(LAYOUT_CONFIG_KEY)
+  const ls = localStorage.getItem(LAYOUT_CONFIG_KEY);
   if (ls) {
     try {
       return JSON.parse(ls) as ILayout
@@ -71,7 +71,7 @@ export function getEmptyCSSVariables() {
 
 export class LayoutSetup {
   public static isLoaded: boolean = false
-  public static config: ILayout = getLayout()
+  public static config: ILayout = getLayout();
   public static classes: ILayoutCSSClasses = getEmptyCssClasses()
   public static attributes: ILayoutHTMLAttributes = getEmptyHTMLAttributes()
   public static cssVariables: ILayoutCSSVariables = getEmptyCSSVariables()
@@ -95,11 +95,11 @@ export class LayoutSetup {
       config.width === 'fluid' ? 'container-fluid' : 'container-xxl'
     )
 
-    if (config.fixed.desktop) {
+    if (DefaultLayoutConfig.header.fixed.desktop) {
       document.body.classList.add('header-fixed')
     }
 
-    if (config.fixed.tabletAndMobile) {
+    if (DefaultLayoutConfig.header.fixed.tabletAndMobile) {
       document.body.classList.add('header-tablet-and-mobile-fixed')
     }
   }
@@ -115,22 +115,23 @@ export class LayoutSetup {
   }
 
   private static initAside(config: IAside): void {
+    console.log("config aside",config)
     // Fixed aside
-    if (config.fixed) {
+    if (DefaultLayoutConfig.aside.fixed) {
       document.body.classList.add('aside-fixed')
     }
 
     // Default minimized
-    if (config.minimized) {
+    if (DefaultLayoutConfig.aside.minimized) {
       document.body.setAttribute('data-kt-aside-minimize', 'on')
       LayoutSetup.classes.asideToggle.push('active')
     }
 
     // Aside secondary
-    if (config.secondaryDisplay) {
+    if (DefaultLayoutConfig.aside.secondaryDisplay) {
       document.body.classList.add('aside-secondary-enabled')
     } else {
-      document.body.classList.add('aside-secondary-enabled')
+      document.body.classList.add('aside-secondary-disabled')
     }
   }
 
@@ -143,13 +144,14 @@ export class LayoutSetup {
   }
 
   private static initConfig(config: ILayout): void {
-    if (config.main?.darkSkinEnabled) {
+    console.log("config",config)
+    if (DefaultLayoutConfig.main?.darkSkinEnabled) {
       document.body.classList.add('dark-skin')
     }
 
     // Init layout
     LayoutSetup.initLayout(config)
-    if (config.main?.type !== 'default') {
+    if (DefaultLayoutConfig.main?.type !== 'default') {
       return
     }
 
@@ -163,7 +165,7 @@ export class LayoutSetup {
   }
 
   public static updatePartialConfig(fieldsToUpdate: Partial<ILayout>): ILayout {
-    const config = LayoutSetup.config
+    const config = LayoutSetup.config;
     const updatedConfig = {...config, ...fieldsToUpdate}
     document.body.className = ''
     LayoutSetup.initCSSClasses()

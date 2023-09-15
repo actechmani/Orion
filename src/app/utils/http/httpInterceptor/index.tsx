@@ -54,6 +54,7 @@ export class HttpInterceptor {
   };
 
   _handleError = (error) => {
+    console.log(" log", error.response?.status);
     switch (error.response?.status) {
       case 401:
         if (sessionStorage.getItem('tenantId')?.length == 0) {

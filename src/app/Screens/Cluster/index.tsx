@@ -16,19 +16,77 @@ import moment from 'moment';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { AiFillEdit, AiFillEye, AiOutlineReload } from 'react-icons/ai';
-
+import TablePagination from '@mui/material/TablePagination';
 
 function ClusterGridPreview() {
-  let PageSize = 10; //limit or perPage
-  const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [sort, setSort] = useState('desc');
 
-  const { clusterList } = useSelector((state: any) => state.cluster);
+  const dispatch = useDispatch();
+
+
+  const { clusterList, pageSize } = useSelector((state: any) => state.cluster);
+
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number,
+  ) => {
+    console.log("newPage", newPage)
+    setPage(newPage);
+
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
 
   useEffect(() => {
-    dispatch(getClusterList());
+    console.log("page", page, "-", rowsPerPage)
+    getAllClusterDetail()
+  }, [page, rowsPerPage])
+
+
+  useEffect(() => {
+    const filter = {
+      'pageRequest': {
+        'page': page,
+        'size': rowsPerPage,
+      },
+      'sortBy': {},
+      'searchText': "",
+      'searchFilters': null,
+    };
+    filter.sortBy[sort] = [
+      'createdAt',
+    ];
+
+    dispatch(getClusterList(filter));
     console.log("clusterList", clusterList)
   }, [dispatch])
+
+  const getAllClusterDetail = () => {
+
+    const filter = {
+      'pageRequest': {
+        'page': page,
+        'size': rowsPerPage,
+      },
+      'sortBy': {},
+      'searchText': "",
+      'searchFilters': null,
+    };
+    filter.sortBy[sort] = [
+      'createdAt',
+    ];
+    dispatch(getClusterList(filter));
+
+  };
+
 
   const getCloudImage = (cloud) => {
     switch (cloud) {
@@ -60,152 +118,170 @@ function ClusterGridPreview() {
 
   return (
     <>
-      <PageTitle>Cluster</PageTitle>
-      <KTCard>
+    
+        <PageTitle>Cluster</PageTitle>
+        {/* begin::Aside*/}
 
-        <div className='card-header border-0 pt-6'>
-          <div className='card-title'>
-            {/* begin::Search */}
-            <div className='d-flex align-items-center position-relative my-1'>
-              <KTIcon iconName='magnifier' className='fs-1 position-absolute ms-6' />
-              <input
-                type='text'
-                data-kt-user-table-filter='search'
-                className='form-control form-control-solid w-250px ps-14'
-                placeholder='Search user'
-              // value={searchTerm}
-              // onChange={(e) => setSearchTerm(e.target.value)}
-              />
+        {/* begin::Aside */}
+        <div className='d-flex flex-row-fluid flex-center bg-body rounded'>
+          <KTCard>
+
+            <div className='card-header border-0 pt-6'>
+              <div className='card-title'>
+                {/* begin::Search */}
+                <div className='d-flex align-items-center position-relative my-1'>
+                  <KTIcon iconName='magnifier' className='fs-1 position-absolute ms-6' />
+                  <input
+                    type='text'
+                    data-kt-user-table-filter='search'
+                    className='form-control form-control-solid w-250px ps-14'
+                    placeholder='Search user'
+                  // value={searchTerm}
+                  // onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+                {/* end::Search */}
+              </div>
+              {/* begin::Card toolbar */}
+              <div className='card-toolbar'>
+                {/* begin::Group actions */}
+                <div className='d-flex justify-content-end' data-kt-user-table-toolbar='base'>
+                  {/* <UsersListFilter /> */}
+
+
+
+                  {/* begin::Add user */}
+                  <button type='button' className='btn btn-primary' >
+                    <KTIcon iconName='plus' className='fs-2' />
+                    Add Cluster
+                  </button>
+                  {/* end::Add user */}
+                </div>
+                {/* end::Group actions */}
+              </div>
+              {/* end::Card toolbar */}
             </div>
-            {/* end::Search */}
-          </div>
-          {/* begin::Card toolbar */}
-          <div className='card-toolbar'>
-            {/* begin::Group actions */}
-            <div className='d-flex justify-content-end' data-kt-user-table-toolbar='base'>
-              {/* <UsersListFilter /> */}
 
 
-
-              {/* begin::Add user */}
-              <button type='button' className='btn btn-primary' >
-                <KTIcon iconName='plus' className='fs-2' />
-                Add Cluster
-              </button>
-              {/* end::Add user */}
-            </div>
-            {/* end::Group actions */}
-          </div>
-          {/* end::Card toolbar */}
-        </div>
-
-
-        <KTCardBody className='py-4'>
-          <div className='table-responsive'>
-            <table
-              id='kt_table_users'
-              className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
-            >
-              <thead>
-                <tr className='text-start text-muted fw-bolder fs-7  gs-0'>
-                  <th>#</th>
-                  <th>Cluster Name</th>
-                  <th>Cloud</th>
-                  <th>Environment</th>
-                  <th>Region</th>
-                  <th>Account Id</th>
-                  <th>Version</th>
-                  <th>Cost</th>
-                  <th>Status</th>
-                  <th>Created At</th>
-                  <th>Manage</th>
-                </tr>
-
-
-              </thead>
-              <tbody className='text-gray-600 fw-bold' >
-                {clusterList.length > 0 ? (
-                  clusterList.map((cluster: any, idx) => (
-                    <tr key={idx}>
-                      <td > {idx + 1 + (PageSize * (currentPage - 1))} </td>
-                      <td> {_get(cluster, 'name', '')} </td>
-                      <td> {getCloudImage(_get(cluster, 'cloudType', ''))} </td>
-                      <td> {_get(cluster, 'env', '')}</td>
-                      <td>
-                        <span
-                          className='ctext-wrap text-pink fw-bolder font-size-14'>
-                          {_get(cluster, 'region', '')}
-                        </span>
-                      </td>
-                      <td>
-
-                        <span>
-                          <OverlayTrigger overlay={<Tooltip >{_get(cluster, 'accountId', '')}</Tooltip>}>
-                            <span >
-                              {`${_get(cluster, 'accountId', '').slice(0, 5)} ...`}
-                            </span>
-                          </OverlayTrigger>
-                        </span>
-
-                      </td>
-                      <td>
-                        <code>{_get(cluster, 'k8sVersion', '')}</code>
-                      </td>
-                      <td>
-                        {"$" + _round(
-                          _isNumber(_get(cluster, 'avgCostFairShare', 0)) ? _get(cluster, 'avgCostFairShare', 0) : 0,
-                        ).toFixed(2)}
-                      </td>
-                      <td>
-
-                        <span
-                        // className={classNames(`fw-600 px-2 badge fs-12 ${_get(cluster, 'status', '') === 'ACTIVE'
-                        //   ? 'bd-started'
-                        //   : 'bd-cancel'
-                        //   }`)}
-                        >
-                          {_isEmpty(_get(cluster, 'status', ''))
-                            ? 'PENDING'
-                            : _get(cluster, 'status', '')}
-                        </span>
-                      </td>
-
-
-                      <td>
-                        {moment(_get(cluster, 'createdAt', '')).format("MM-DD-YYYY")}
-                      </td>
-
-                      <td>
-                        <div className='dropdown'>
-                          <OverlayTrigger
-                            placement="top"
-                            delay={{ show: 250, hide: 400 }}
-                            overlay={renderTooltip}
-                          >
-                            <NavLink to="/view-cluster-information" state={{ cluster: cluster }} className='btn btn-outline-purple btn-sm'><AiFillEye /></NavLink>
-
-                          </OverlayTrigger>
-                        </div>
-                      </td>
+            <KTCardBody className='py-4'>
+              <div className='table-responsive'>
+                <table
+                  id='kt_table_users'
+                  className='table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer'
+                >
+                  <thead>
+                    <tr className='text-start text-muted fw-bolder fs-7  gs-0'>
+                      <th>#</th>
+                      <th>Cluster Name</th>
+                      <th>Cloud</th>
+                      <th>Environment</th>
+                      <th>Region</th>
+                      <th>Account Id</th>
+                      <th>Version</th>
+                      <th>Cost</th>
+                      <th>Status</th>
+                      <th>Created At</th>
+                      <th>Manage</th>
                     </tr>
 
 
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={11}>
-                      <div className='d-flex text-center w-100 align-content-center justify-content-center'>
-                        No matching records found
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-          <UsersListPagination />
-        </KTCardBody>
-      </KTCard>
+                  </thead>
+                  <tbody className='text-gray-600 fw-bold' >
+                    {clusterList.length > 0 ? (
+                      clusterList.map((cluster: any, idx) => (
+                        <tr key={idx}>
+                          <td > {idx + 1 + (rowsPerPage * page)} </td>
+                          <td> {_get(cluster, 'name', '')} </td>
+                          <td> {getCloudImage(_get(cluster, 'cloudType', ''))} </td>
+                          <td> {_get(cluster, 'env', '')}</td>
+                          <td>
+                            <span
+                              className='ctext-wrap text-pink fw-bolder font-size-14'>
+                              {_get(cluster, 'region', '')}
+                            </span>
+                          </td>
+                          <td>
+
+                            <span>
+                              <OverlayTrigger overlay={<Tooltip >{_get(cluster, 'accountId', '')}</Tooltip>}>
+                                <span >
+                                  {`${_get(cluster, 'accountId', '').slice(0, 5)} ...`}
+                                </span>
+                              </OverlayTrigger>
+                            </span>
+
+                          </td>
+                          <td>
+                            <code>{_get(cluster, 'k8sVersion', '')}</code>
+                          </td>
+                          <td>
+                            {"$" + _round(
+                              _isNumber(_get(cluster, 'avgCostFairShare', 0)) ? _get(cluster, 'avgCostFairShare', 0) : 0,
+                            ).toFixed(2)}
+                          </td>
+                          <td>
+
+                            <span
+                            // className={classNames(`fw-600 px-2 badge fs-12 ${_get(cluster, 'status', '') === 'ACTIVE'
+                            //   ? 'bd-started'
+                            //   : 'bd-cancel'
+                            //   }`)}
+                            >
+                              {_isEmpty(_get(cluster, 'status', ''))
+                                ? 'PENDING'
+                                : _get(cluster, 'status', '')}
+                            </span>
+                          </td>
+
+
+                          <td>
+                            {moment(_get(cluster, 'createdAt', '')).format("MM-DD-YYYY")}
+                          </td>
+
+                          <td>
+                            <div className='dropdown'>
+                              <OverlayTrigger
+                                placement="top"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={renderTooltip}
+                              >
+                                <NavLink to="/view-cluster-information" state={{ cluster: cluster }} className='btn btn-outline-purple btn-sm'><AiFillEye /></NavLink>
+
+                              </OverlayTrigger>
+                            </div>
+                          </td>
+                        </tr>
+
+
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={11}>
+                          <div className='d-flex text-center w-100 align-content-center justify-content-center'>
+                            No matching records found
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+              <TablePagination
+                color="secondary"
+                component="div"
+                count={pageSize}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </KTCardBody>
+          </KTCard>
+        </div>
+
+      
+      
+
     </>
   )
 }

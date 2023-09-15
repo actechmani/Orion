@@ -15,7 +15,8 @@ const Search: FC = () => {
   const wrapperElement = useRef<HTMLDivElement | null>(null)
   const suggestionsElement = useRef<HTMLDivElement | null>(null)
   const emptyElement = useRef<HTMLDivElement | null>(null);
-  const [filteredTenants, setFilteredTenants] = React.useState<Tenants[]>([])
+  const [filteredTenants, setFilteredTenants] = React.useState<Tenants[]>([]);
+  const [tenantName, setTenantName] = React.useState<string | null>(null);
 
   const dispatch = useDispatch();
   const tenantList: Tenants[] = useSelector((state: any) => state.tenant.tenantList)
@@ -27,7 +28,11 @@ const Search: FC = () => {
 
   useEffect(() => {
     setFilteredTenants(tenantList)
-  }, [tenantList])
+  }, [tenantList]);
+
+  useEffect(() => {
+    setTenantName(sessionStorage.getItem('tenantName'))
+  }, [sessionStorage.getItem('tenantName')])
 
 
   const handlesearchtenant = (search) => {
@@ -50,9 +55,19 @@ const Search: FC = () => {
 
   const selectTenant = (tenant: Tenants) => {
     console.log("tenant", tenant)
-    window.sessionStorage.setItem('tenantId', _get(tenant, 'tenantId', null));
-    window.localStorage.setItem('tenantName', _get(tenant, 'tenantName', null));
-    // element.current!.classList.remove('show menu-dropdown')
+    window.sessionStorage.setItem('tenantId', _get(tenant, 'id', null));
+    window.sessionStorage.setItem('tenantName', _get(tenant, 'name', null));
+    setTenantName(tenant.name);
+    element.current!.classList.remove('show')
+    element.current!.classList.remove('menu-dropdown');
+    var test = document.getElementById("kt_header_search_toggle");
+    test!.classList.remove("active");
+    test!.classList.remove("show");
+
+    var test1 = document.getElementById("kt_header_search_content");
+    test1!.classList.remove("show");
+    test1!.removeAttribute('style');
+
   }
 
 
@@ -123,13 +138,15 @@ const Search: FC = () => {
           data-kt-search-element='toggle'
           id='kt_header_search_toggle'
         >
-          <div className='btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px'>
-            <KTIcon iconName='magnifier' className='fs-1' />
+          <div className='btn btn-icon btn-active-light-primary w-150px h-30px w-md-140px h-md-40px'>
+            <span className='p-4 fw-bold fs-3  w-130px'>{tenantName}</span>
+            <KTIcon iconName='magnifier' className='fs-1 text-end' />
           </div>
         </div>
 
         <div
           data-kt-search-element='content'
+          id='kt_header_search_content'
           className='menu menu-sub menu-sub-dropdown p-7 w-325px w-md-375px'
         >
           <div

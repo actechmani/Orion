@@ -1528,4 +1528,585 @@ const ClusterList = {
     }
 }
 
-export { TenantList, ClusterList }
+const clusterDetail = {
+    "tenantId": "21be6d85-c601-46d5-a93c-d5221e44149a",
+    "id": "04d124a8-b6eb-429b-8d6f-a47b1c7da122",
+    "createdBy": "InfraAPI",
+    "modifiedBy": "sbalasubramanian",
+    "createdAt": "2023-08-09T18:39:15.000+00:00",
+    "modifiedAt": "2023-09-08T10:58:56.000+00:00",
+    "name": "intcloud-qaupgradedr-aks-qa-useast",
+    "status": "Succeeded",
+    "cloudType": "azure",
+    "env": "qa",
+    "accountId": "e2f8dd13-880d-4259-b6f3-f1ce18ec22a8",
+    "accountName": "",
+    "region": "eastus",
+    "k8sVersion": "1.25.5",
+    "controlPlaneIAMRole": null,
+    "clusterResourceGroup": null,
+    "bluePrintDetails": null,
+    "instances": null,
+    "tags": {
+        "POD": "iics-qa-azupgdr-pod1",
+        "BUDGETPOD": "azure-upgrade-dr",
+        "ALERTGROUP": "ops_team",
+        "BILLINGPOD": "azure-upgrade-dr",
+        "OWNEREMAIL": "dlcloudtrustops@informatica.com",
+        "SERVICENAME": "NA",
+        "BUSINESSUNIT": "iics",
+        "APPLICATIONENV": "qa",
+        "BUSINESSENTITY": "intcloud",
+        "KUBERNETES_VERSION": "1.25.5"
+    },
+    "metadata": {
+        "sku": {
+            "name": "Basic",
+            "tier": "Paid"
+        },
+        "tags": {
+            "POD": "iics-qa-azupgdr-pod1",
+            "BUDGETPOD": "azure-upgrade-dr",
+            "ALERTGROUP": "ops_team",
+            "BILLINGPOD": "azure-upgrade-dr",
+            "OWNEREMAIL": "dlcloudtrustops@informatica.com",
+            "SERVICENAME": "NA",
+            "BUSINESSUNIT": "iics",
+            "APPLICATIONENV": "qa",
+            "BUSINESSENTITY": "intcloud",
+            "KUBERNETES_VERSION": "1.25.5"
+        },
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/INFA-CLOUD-SECURITY/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ichsnonprod-intcloud-qa-aks-msi": {}
+            }
+        },
+        "location": "eastus",
+        "properties": {
+            "dnsPrefix": "intcloud-qaupgradedr-aks-qa-useast",
+            "aadProfile": {
+                "managed": true,
+                "tenantID": "2638f43e-f77d-4fc7-ab92-7b753b7876fd",
+                "enableAzureRBAC": false,
+                "adminGroupObjectIDs": [
+                    "d24a7754-61b8-4d72-8892-57dca7598bc7"
+                ]
+            },
+            "enableRBAC": true,
+            "linuxProfile": {
+                "ssh": {
+                    "publicKeys": [
+                        {
+                            "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMxV9A3DIV3D5BOxaIYgsdwzLzBks/sJpKdVB/GygT3ZEyXjMh+NriKaawmZQCQTceZ+O/WEyVsqRPEBzK78S6Y40tjwfc+XLLQKg50xpvZ1NP6Ith/2FvvwxiuE4xapJI4rWoURx4swHRs2Ai0JVie3FEmirxPskUNHCSa6tO8cMFhALwd5q74QYYS0L7O5gAE3BzJT3Yflu1gqlZmjXiLZY0hk+lK0ez9xIxkozgV4kRtdvaU1Dr5ggx3jEwMHM0fw9FVoK9Ns1pETqB7Myvib05hKTuqHewxKxWQo84PW7UsfZBfPgtw5QQH6FuNrK3JFrWTARjbw6rElWJ4y15  centos"
+                        }
+                    ]
+                },
+                "adminUsername": "cloud_user"
+            },
+            "addonProfiles": {
+                "httpApplicationRouting": {
+                    "enabled": false
+                }
+            },
+            "networkProfile": {
+                "serviceCidr": "172.16.0.0/16",
+                "dnsServiceIP": "172.16.0.10",
+                "outboundType": "loadBalancer",
+                "networkPlugin": "azure",
+                "loadBalancerSku": "Standard",
+                "dockerBridgeCidr": "172.17.0.1/16",
+                "loadBalancerProfile": {
+                    "managedOutboundIPs": {
+                        "count": 1
+                    },
+                    "effectiveOutboundIPs": [
+                        {
+                            "id": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Network/publicIPAddresses/8637126c-57ff-45c3-af0a-5981ddf5483b"
+                        }
+                    ]
+                }
+            },
+            "windowsProfile": {
+                "adminUsername": "azureuser"
+            },
+            "identityProfile": {
+                "kubeletidentity": {
+                    "clientId": "c0c583c8-5089-4fb9-bee3-771c938761b7",
+                    "objectId": "34b6fc18-23d7-4c92-9faa-9c1f751bd8ad",
+                    "resourceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/INFA-CLOUD-SECURITY/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ichsnonprod-intcloud-qa-aks-msi"
+                }
+            },
+            "agentPoolProfiles": [
+                {
+                    "mode": "System",
+                    "name": "agentpool",
+                    "tags": {
+                        "POD": "iics-qa-azupgdr-pod1",
+                        "BUDGETPOD": "azure-upgrade-dr",
+                        "ALERTGROUP": "ops_team",
+                        "BILLINGPOD": "azure-upgrade-dr",
+                        "OWNEREMAIL": "ctengops@informatica.com",
+                        "QUALYSEVAL": "EXEMPT",
+                        "SERVICENAME": "na",
+                        "BUSINESSUNIT": "infrastructure",
+                        "APPLICATIONENV": "qa",
+                        "BUSINESSENTITY": "cloudtrust"
+                    },
+                    "type": "VirtualMachineScaleSets",
+                    "count": 4,
+                    "osType": "Linux",
+                    "vmSize": "Standard_D8s_v4",
+                    "maxPods": 30,
+                    "maxCount": 4,
+                    "minCount": 1,
+                    "osDiskType": "Managed",
+                    "osDiskSizeGB": 100,
+                    "vnetSubnetID": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/IICS-QA-VNET-USEAST/providers/Microsoft.Network/virtualNetworks/IICS-QA-VNET-USEAST/subnets/IICS-QA-VNET-USEAST-AKS",
+                    "upgradeSettings": {},
+                    "enableAutoScaling": true,
+                    "enableNodePublicIP": false,
+                    "orchestratorVersion": "1.25.5"
+                },
+                {
+                    "mode": "User",
+                    "name": "iics1",
+                    "tags": {
+                        "POD": "iics-qa-azupgdr-pod1",
+                        "BUDGETPOD": "azure-upgrade-dr",
+                        "ALERTGROUP": "ops_team",
+                        "BILLINGPOD": "azure-upgrade-dr",
+                        "OWNEREMAIL": "ctengops@informatica.com",
+                        "QUALYSEVAL": "EXEMPT",
+                        "SERVICENAME": "na",
+                        "BUSINESSUNIT": "iics",
+                        "APPLICATIONENV": "qa",
+                        "BUSINESSENTITY": "intcloud"
+                    },
+                    "type": "VirtualMachineScaleSets",
+                    "count": 1,
+                    "osType": "Linux",
+                    "vmSize": "Standard_D8s_v4",
+                    "maxPods": 30,
+                    "maxCount": 12,
+                    "minCount": 1,
+                    "nodeLabels": {
+                        "bu": "iics"
+                    },
+                    "nodeTaints": [
+                        "affinity=iics-azupgradedr-amd64:NoSchedule"
+                    ],
+                    "osDiskType": "Managed",
+                    "osDiskSizeGB": 100,
+                    "vnetSubnetID": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/IICS-QA-VNET-USEAST/providers/Microsoft.Network/virtualNetworks/IICS-QA-VNET-USEAST/subnets/IICS-QA-VNET-USEAST-AKS",
+                    "upgradeSettings": {},
+                    "availabilityZones": [
+                        "1"
+                    ],
+                    "enableAutoScaling": true,
+                    "enableNodePublicIP": false,
+                    "orchestratorVersion": "1.25.5"
+                },
+                {
+                    "mode": "User",
+                    "name": "iics2",
+                    "tags": {
+                        "POD": "iics-qa-azupgdr-pod1",
+                        "BUDGETPOD": "azure-upgrade-dr",
+                        "ALERTGROUP": "ops_team",
+                        "BILLINGPOD": "azure-upgrade-dr",
+                        "OWNEREMAIL": "ctengops@informatica.com",
+                        "QUALYSEVAL": "EXEMPT",
+                        "SERVICENAME": "na",
+                        "BUSINESSUNIT": "iics",
+                        "APPLICATIONENV": "qa",
+                        "BUSINESSENTITY": "intcloud"
+                    },
+                    "type": "VirtualMachineScaleSets",
+                    "count": 3,
+                    "osType": "Linux",
+                    "vmSize": "Standard_D8s_v4",
+                    "maxPods": 30,
+                    "maxCount": 12,
+                    "minCount": 1,
+                    "nodeLabels": {
+                        "bu": "iics"
+                    },
+                    "nodeTaints": [
+                        "affinity=iics-azupgradedr-amd64:NoSchedule"
+                    ],
+                    "osDiskType": "Managed",
+                    "osDiskSizeGB": 100,
+                    "vnetSubnetID": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/IICS-QA-VNET-USEAST/providers/Microsoft.Network/virtualNetworks/IICS-QA-VNET-USEAST/subnets/IICS-QA-VNET-USEAST-AKS",
+                    "upgradeSettings": {},
+                    "availabilityZones": [
+                        "2"
+                    ],
+                    "enableAutoScaling": true,
+                    "enableNodePublicIP": false,
+                    "orchestratorVersion": "1.25.5"
+                },
+                {
+                    "mode": "User",
+                    "name": "iics3",
+                    "tags": {
+                        "POD": "iics-qa-azupgdr-pod1",
+                        "BUDGETPOD": "azure-upgrade-dr",
+                        "ALERTGROUP": "ops_team",
+                        "BILLINGPOD": "azure-upgrade-dr",
+                        "OWNEREMAIL": "ctengops@informatica.com",
+                        "QUALYSEVAL": "EXEMPT",
+                        "SERVICENAME": "na",
+                        "BUSINESSUNIT": "iics",
+                        "APPLICATIONENV": "qa",
+                        "BUSINESSENTITY": "intcloud"
+                    },
+                    "type": "VirtualMachineScaleSets",
+                    "count": 2,
+                    "osType": "Linux",
+                    "vmSize": "Standard_D8s_v4",
+                    "maxPods": 30,
+                    "maxCount": 12,
+                    "minCount": 1,
+                    "nodeLabels": {
+                        "bu": "iics"
+                    },
+                    "nodeTaints": [
+                        "affinity=iics-azupgradedr-amd64:NoSchedule"
+                    ],
+                    "osDiskType": "Managed",
+                    "osDiskSizeGB": 100,
+                    "vnetSubnetID": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/IICS-QA-VNET-USEAST/providers/Microsoft.Network/virtualNetworks/IICS-QA-VNET-USEAST/subnets/IICS-QA-VNET-USEAST-AKS",
+                    "upgradeSettings": {},
+                    "availabilityZones": [
+                        "3"
+                    ],
+                    "enableAutoScaling": true,
+                    "enableNodePublicIP": false,
+                    "orchestratorVersion": "1.25.5"
+                }
+            ],
+            "autoScalerProfile": {
+                "expander": "random",
+                "scan-interval": "10s",
+                "max-empty-bulk-delete": "10",
+                "new-pod-scale-up-delay": "0s",
+                "ok-total-unready-count": "3",
+                "scale-down-unready-time": "20m",
+                "scale-down-unneeded-time": "10m",
+                "scale-down-delay-after-add": "10m",
+                "balance-similar-node-groups": "false",
+                "skip-nodes-with-system-pods": "true",
+                "max-graceful-termination-sec": "600",
+                "max-total-unready-percentage": "45",
+                "scale-down-delay-after-delete": "10s",
+                "skip-nodes-with-local-storage": "false",
+                "scale-down-delay-after-failure": "3m",
+                "scale-down-utilization-threshold": "0.5"
+            },
+            "kubernetesVersion": "1.25.5",
+            "nodeResourceGroup": "MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus",
+            "apiServerAccessProfile": {
+                "authorizedIPRanges": [
+                    "212.78.191.186/32",
+                    "213.208.237.34/32",
+                    "12.231.122.196/32",
+                    "98.6.145.218/32",
+                    "12.196.145.130/32",
+                    "207.207.12.3/32",
+                    "12.231.122.195/32",
+                    "98.6.145.221/32",
+                    "115.114.81.10/32",
+                    "125.17.163.70/32",
+                    "103.245.74.5/32",
+                    "80.169.138.250/32",
+                    "89.100.106.249/32",
+                    "194.165.163.133/32",
+                    "89.101.151.105/32",
+                    "59.152.240.26/32",
+                    "59.188.222.98/32",
+                    "115.114.129.246/32",
+                    "115.114.129.25/32",
+                    "125.16.25.82/32",
+                    "77.72.249.10/32",
+                    "77.72.251.75/32",
+                    "154.14.78.34/32",
+                    "83.144.64.138/32",
+                    "212.145.230.162/32",
+                    "213.27.140.122/32",
+                    "62.97.65.122/32",
+                    "62.255.30.234/32",
+                    "80.169.113.154/32",
+                    "62.26.158.234/32",
+                    "62.96.77.242/32",
+                    "150.101.217.233/32",
+                    "203.219.205.146/32",
+                    "195.81.104.98/32",
+                    "213.215.137.98/32",
+                    "149.97.251.20/32",
+                    "157.130.249.2/32",
+                    "38.140.253.114/32",
+                    "109.26.212.242/32",
+                    "62.23.101.58/32",
+                    "162.220.28.130/32",
+                    "198.202.141.249/32",
+                    "4.16.147.2/32",
+                    "199.192.87.194/32",
+                    "32.140.104.214/32",
+                    "4.15.123.194/32",
+                    "179.191.77.250/32",
+                    "186.231.95.106/32",
+                    "118.189.168.242/32",
+                    "58.185.124.154/32",
+                    "149.6.169.130/32",
+                    "80.169.185.18/32",
+                    "195.52.202.163/32",
+                    "91.244.125.8/32",
+                    "220.244.53.102/32",
+                    "59.167.161.121/32",
+                    "212.68.144.6/32",
+                    "31.168.99.194/32",
+                    "122.208.201.74/32",
+                    "184.94.42.34/32",
+                    "206.223.171.10/32",
+                    "20.114.4.0/32",
+                    "13.90.113.224/29"
+                ],
+                "enablePrivateCluster": false
+            },
+            "servicePrincipalProfile": {
+                "clientId": "msi"
+            }
+        }
+    },
+    "networkDetails": null,
+    "asg": [
+        {
+            "name": "agentpool",
+            "status": "PendingAwake",
+            "maxSize": 4,
+            "minSize": 1,
+            "createdAt": "2023-08-10T00:08:25.314482172Z",
+            "instances": [
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-agentpool-61291264-vmss/virtualMachines/0",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "null"
+                },
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-agentpool-61291264-vmss/virtualMachines/1",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "null"
+                },
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-agentpool-61291264-vmss/virtualMachines/7",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "null"
+                }
+            ],
+            "desiredSize": 4,
+            "instanceType": "",
+            "projectedMax": 4,
+            "projectedMin": 1,
+            "availabilityZone": "[]",
+            "modifiedBy": "InfraAPI",
+            "modifiedAt": "Sep 2, 2023, 10:47:22 AM"
+        },
+        {
+            "name": "iics1",
+            "status": "Active",
+            "maxSize": 12,
+            "minSize": 1,
+            "createdAt": "2023-08-10T00:08:25.314514353Z",
+            "instances": [
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-iics1-37511170-vmss/virtualMachines/12",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "[\"1\"]"
+                }
+            ],
+            "desiredSize": 1,
+            "instanceType": "",
+            "projectedMax": 12,
+            "projectedMin": 3,
+            "availabilityZone": "[\"1\"]",
+            "comments": "superadmin",
+            "modifiedBy": "sbalasubramanian",
+            "modifiedAt": "Sep 4, 2023, 8:07:06 PM"
+        },
+        {
+            "name": "iics2",
+            "status": "Active",
+            "maxSize": 12,
+            "minSize": 1,
+            "createdAt": "2023-08-10T00:08:25.314547592Z",
+            "instances": [
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-iics2-23535555-vmss/virtualMachines/0",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "[\"2\"]"
+                }
+            ],
+            "desiredSize": 3,
+            "instanceType": "",
+            "projectedMax": 2,
+            "projectedMin": 1,
+            "availabilityZone": "[\"2\"]",
+            "comments": "test",
+            "modifiedBy": "sbalasubramanian",
+            "modifiedAt": "Sep 8, 2023, 4:28:56 PM",
+            "scheduleId": "f0c55a27-b365-4c55-8345-0dd9ddecf8b1",
+            "scheduleName": "testdevtestsuper",
+            "sleepCronExpression": "00 09 11 ? * *",
+            "sleepLastRun": "Sep 13, 2023, 12:06:57 AM",
+            "sleepNextRun": "Sep 21, 2023, 11:09:00 AM",
+            "awakeCronExpression": "00 09 16 ? * *",
+            "awakeLastRun": null,
+            "awakeNextRun": "Sep 20, 2023, 4:09:00 PM"
+        },
+        {
+            "name": "iics3",
+            "status": "Active",
+            "maxSize": 12,
+            "minSize": 1,
+            "createdAt": "2023-08-10T00:08:25.314584503Z",
+            "instances": [
+                {
+                    "amiType": "/AKSUbuntu/images/2204gen2containerd/versions/202304.20.0",
+                    "createdAt": "0001-01-01T00:00:00Z",
+                    "instanceId": "/subscriptions/e2f8dd13-880d-4259-b6f3-f1ce18ec22a8/resourceGroups/MC_INTCLOUD-QA-USEAST-AKS-RG_intcloud-qaupgradedr-aks-qa-useast_eastus/providers/Microsoft.Compute/virtualMachineScaleSets/aks-iics3-57336755-vmss/virtualMachines/0",
+                    "k8SVersion": "Kubernetes:1.25.5",
+                    "instanceType": "Standard_D8s_v4",
+                    "availabilityZone": "[\"3\"]"
+                }
+            ],
+            "desiredSize": 2,
+            "instanceType": "",
+            "projectedMax": 12,
+            "projectedMin": 5,
+            "availabilityZone": "[\"3\"]",
+            "comments": "test",
+            "modifiedBy": "sbalasubramanian",
+            "modifiedAt": "Sep 4, 2023, 4:12:08 PM"
+        }
+    ],
+    "debug": false,
+    "nodeGroupSchedule": null,
+    "ttl": null,
+    "avgCostAllocation": 0E-10,
+    "avgCostFairShare": 0E-10,
+    "dailyCost": {
+        "dailyCost": null
+    },
+    "instanceCount": null,
+    "orionOps": null,
+    "msiSubscription": null,
+    "managementNodeUserMSIName": null,
+    "userAssignedIdentityKubeletName": null,
+    "externalDNSMI": null
+}
+
+const nodeGroupSchedule = [
+    {
+        "createdBy": "sbalasubramanian",
+        "modifiedBy": "sbalasubramanian",
+        "createdAt": "2023-08-30T16:40:22.000+00:00",
+        "modifiedAt": "2023-09-12T08:51:31.000+00:00",
+        "id": "f0c55a27-b365-4c55-8345-0dd9ddecf8b1",
+        "tenantId": "21be6d85-c601-46d5-a93c-d5221e44149a",
+        "name": "testdevtestsuper",
+        "sleep": {
+            "cronExpression": "00 09 11 ? * *",
+            "lastRun": "Sep 13, 2023, 12:06:57 AM",
+            "nextRun": "Sep 21, 2023, 11:09:00 AM"
+        },
+        "awake": {
+            "cronExpression": "00 09 16 ? * *",
+            "lastRun": null,
+            "nextRun": "Sep 21, 2023, 4:09:00 PM"
+        },
+        "status": null,
+        "jobGroup": "NODEGROUP",
+        "startDate": "2023-09-21T00:00:00.000-07:00",
+        "endDate": null,
+        "uiFormObject": {
+            "startDate": "2023-09-21",
+            "sleepEffectiveTime": "11:09",
+            "awakeEffectiveTime": "16:09",
+            "scheduleName": "testdevtestsuper",
+            "frequency": {
+                "label": "Daily",
+                "value": "daily"
+            },
+            "repeat": {
+                "label": "Repeat Indefinitely",
+                "value": "indefinitely"
+            }
+        },
+        "nodeGroupInfo": [
+            {
+                "clusterId": "04d124a8-b6eb-429b-8d6f-a47b1c7da122",
+                "nodeGroupName": "iics2"
+            },
+            {
+                "clusterId": "22",
+                "nodeGroupName": ""
+            }
+        ]
+    },
+    {
+        "createdBy": "sbalasubramanian",
+        "modifiedBy": "sbalasubramanian",
+        "createdAt": "2023-09-12T08:14:30.000+00:00",
+        "modifiedAt": "2023-09-12T08:33:26.000+00:00",
+        "id": "88f36371-339b-415a-a42e-f27e52a98eaa",
+        "tenantId": "21be6d85-c601-46d5-a93c-d5221e44149a",
+        "name": "testdemo123",
+        "sleep": {
+            "cronExpression": "00 44 14 ? * *",
+            "lastRun": null,
+            "nextRun": "Sep 14, 2023, 2:44:00 PM"
+        },
+        "awake": {
+            "cronExpression": "00 44 15 ? * *",
+            "lastRun": null,
+            "nextRun": "Sep 14, 2023, 3:44:00 PM"
+        },
+        "status": null,
+        "jobGroup": "NODEGROUP",
+        "startDate": "2023-09-14T00:00:00.000-07:00",
+        "endDate": null,
+        "uiFormObject": {
+            "startDate": "2023-09-16",
+            "sleepEffectiveTime": "14:44",
+            "awakeEffectiveTime": "15:44",
+            "scheduleName": "testdemo123",
+            "frequency": {
+                "label": "Daily",
+                "value": "daily"
+            },
+            "repeat": {
+                "label": "Repeat Indefinitely",
+                "value": "indefinitely"
+            }
+        },
+        "nodeGroupInfo": []
+    }
+]
+
+export { TenantList, ClusterList, clusterDetail, nodeGroupSchedule }

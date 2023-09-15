@@ -89,6 +89,7 @@ const tenantSlice = createSlice({
         sagaTenantListFailure(state, action) {
             state.loading = false;
             state.error = action.payload;
+            state.tenantList = TenantList
         },
     }
 })
