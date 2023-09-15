@@ -1,18 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useRef } from 'react'
-import ApexCharts, { ApexOptions } from 'apexcharts'
-import { KTIcon } from '../../../helpers'
-import { Dropdown1 } from '../../content/dropdown/Dropdown1'
-import { getCSS, getCSSVariableValue } from '../../../assets/ts/_utils'
-import { useThemeMode } from '../../layout/theme-mode/ThemeModeProvider'
+import React, {useEffect, useRef} from 'react'
+import ApexCharts, {ApexOptions} from 'apexcharts'
+import {KTIcon} from '../../../helpers'
+import {Dropdown1} from '../../content/dropdown/Dropdown1'
+import {getCSS, getCSSVariableValue} from '../../../assets/ts/_utils'
+import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
 
 type Props = {
   className: string
 }
 
-const ChartsWidget1: React.FC<Props> = ({ className }) => {
+const ChartsWidget1: React.FC<Props> = ({className}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
-  const { mode } = useThemeMode()
+  const {mode} = useThemeMode()
 
   useEffect(() => {
     const chart = refreshChart()
@@ -45,7 +45,7 @@ const ChartsWidget1: React.FC<Props> = ({ className }) => {
       <div className='card-header border-0 pt-5'>
         {/* begin::Title */}
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bold fs-3 mb-1'>Cloud Usage Analysis</span>
+          <span className='card-label fw-bold fs-3 mb-0 '>Cloud Usage Analysis</span>
         </h3>
         {/* end::Title */}
 
@@ -69,9 +69,9 @@ const ChartsWidget1: React.FC<Props> = ({ className }) => {
       {/* end::Header */}
 
       {/* begin::Body */}
-      <div className='card-body'>
+      <div className='card-body  ps-5 pe-5 pt-1 pb-1'>
         {/* begin::Chart */}
-        <div ref={chartRef} id='kt_charts_widget_1_chart' style={{ height: '350px' }} />
+        <div ref={chartRef} id='kt_charts_widget_1_chart' style={{height: '235px'}} />
         {/* end::Chart */}
       </div>
       {/* end::Body */}
@@ -79,7 +79,7 @@ const ChartsWidget1: React.FC<Props> = ({ className }) => {
   )
 }
 
-export { ChartsWidget1 }
+export {ChartsWidget1}
 
 function getChartOptions(height: number): ApexOptions {
   const labelColor = getCSSVariableValue('--bs-gray-500')
@@ -111,6 +111,7 @@ function getChartOptions(height: number): ApexOptions {
         horizontal: false,
         columnWidth: '30%',
         borderRadius: 5,
+        barHeight: '50%',
       },
     },
     legend: {
@@ -189,6 +190,13 @@ function getChartOptions(height: number): ApexOptions {
         lines: {
           show: true,
         },
+      },
+
+      padding: {
+        top: 0,
+        left: 0,
+        right: -10,
+        bottom: -10,
       },
     },
   }

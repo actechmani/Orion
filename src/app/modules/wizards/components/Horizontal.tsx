@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { Step1 } from './steps/Step1'
-import { Step2 } from './steps/Step2'
-import { Step3 } from './steps/Step3'
-import { Step4 } from './steps/Step4'
-import { Step5 } from './steps/Step5'
-import { KTIcon } from '../../../../_metronic/helpers'
-import { StepperComponent } from '../../../../_metronic/assets/ts/components'
-import { Form, Formik, FormikValues } from 'formik'
-import { ICreateAccount, inits } from './CreateAccountWizardHelper'
-import { useNavigate } from 'react-router-dom'
+import React, {FC, useEffect, useRef, useState} from 'react'
+import {Step1} from './steps/Step1'
+import {Step2} from './steps/Step2'
+import {Step3} from './steps/Step3'
+import {Step4} from './steps/Step4'
+import {Step5} from './steps/Step5'
+import {KTIcon} from '../../../../_metronic/helpers'
+import {StepperComponent} from '../../../../_metronic/assets/ts/components'
+import {Form, Formik, FormikValues} from 'formik'
+import {ICreateAccount, inits} from './CreateAccountWizardHelper'
+import {useNavigate} from 'react-router-dom'
 
 const Horizontal: FC = () => {
   const stepperRef = useRef<HTMLDivElement | null>(null)
@@ -16,7 +16,7 @@ const Horizontal: FC = () => {
   const [initValues] = useState<ICreateAccount>(inits)
   const [isSubmitButton, setSubmitButton] = useState(false)
   const navigate = useNavigate()
-  console.log("initValues", initValues)
+  console.log('initValues', initValues)
   const loadStepper = () => {
     stepper.current = StepperComponent.createInsance(stepperRef.current as HTMLDivElement)
   }
@@ -27,7 +27,6 @@ const Horizontal: FC = () => {
     }
 
     stepper.current.goPrev()
-
 
     setSubmitButton(stepper.current.currentStepIndex === stepper.current.totalStepsNumber)
   }
@@ -48,7 +47,6 @@ const Horizontal: FC = () => {
     }
 
     setSubmitButton(stepper.current.currentStepIndex === stepper.current.totalStepsNumber)
-
   }
 
   useEffect(() => {
@@ -61,16 +59,14 @@ const Horizontal: FC = () => {
 
   return (
     <div className='container-fluid'>
-      <div >
-        <div >
+      <div>
+        <div>
           <div
             ref={stepperRef}
-            className='stepper stepper-links d-flex flex-column pt-15'
+            className='stepper stepper-links d-flex flex-column py-0'
             id='kt_create_account_stepper'
           >
-            <div className='stepper-nav mb-5'>
-
-
+            <div className='stepper-nav mb-0 '>
               <div className='stepper-item' data-kt-stepper-element='nav'>
                 <h3 className='stepper-title'>Choose Team</h3>
               </div>
@@ -79,8 +75,6 @@ const Horizontal: FC = () => {
                 <h3 className='stepper-title'>Planning</h3>
               </div>
 
-
-
               <div className='stepper-item' data-kt-stepper-element='nav'>
                 <h3 className='stepper-title'>Completed</h3>
               </div>
@@ -88,8 +82,7 @@ const Horizontal: FC = () => {
 
             <Formik initialValues={initValues} onSubmit={submitStep}>
               {() => (
-                <Form className='mx-auto mw-600px w-100 pt-15 pb-10' id='kt_create_account_form'>
-
+                <Form className='mx-auto mw-600px w-100 pt-6 pb-0' id='kt_create_account_form'>
                   <div className='current' data-kt-stepper-element='content'>
                     <Step2 />
                   </div>
@@ -98,13 +91,11 @@ const Horizontal: FC = () => {
                     <Step3 />
                   </div>
 
-
-
                   <div data-kt-stepper-element='content'>
                     <Step5 />
                   </div>
 
-                  <div className='d-flex flex-stack pt-15'>
+                  <div className='d-flex flex-stack pt-10 mb-0'>
                     <div className='mr-2'>
                       <button
                         onClick={prevStep}
@@ -117,8 +108,12 @@ const Horizontal: FC = () => {
                       </button>
                     </div>
 
-                    <div>
-                      <button type='submit' className='btn btn-lg btn-primary me-3'>
+                    <div className='mb-0'>
+                      <button
+                        type='submit'
+                        className='btn btn-lg btn-primary me-3'
+                        // style={{backgroundColor: '#78829d'}}
+                      >
                         <span className='indicator-label'>
                           {!isSubmitButton && 'Continue'}
                           {isSubmitButton && 'Submit'}
@@ -132,8 +127,9 @@ const Horizontal: FC = () => {
             </Formik>
           </div>
         </div>
-      </div></div>
+      </div>
+    </div>
   )
 }
 
-export { Horizontal }
+export {Horizontal}
